@@ -1,0 +1,68 @@
+
+*** 12:28:44 *** 
+Starting Nastran Exporter
+
+*** 12:28:44 *** 
+Writing file C:\Users\ado\Desktop\Wing 
+Model\WING_WIRE_MODEL2\wing_wire_sim1-solution_1.dat
+ 
+*** 12:28:44 *** 
+Writing NX NASTRAN 10.0 compatible deck
+
+*** 12:28:44 *** 
+Writing Nastran System section
+
+*** 12:28:44 *** 
+Writing File Management section
+
+*** 12:28:44 *** 
+Writing Executive Control section
+
+*** 12:28:44 *** 
+Writing Case Control section
+
+*** 12:28:45 *** 
+Writing Bulk Data section
+
+*** 12:28:45 *** 
+Writing Nodes
+
+*** 12:28:45 *** 
+Writing Elements
+
+*** 12:28:45 *** 
+Writing Physical Properties
+
+*** 12:28:45 *** 
+Writing Materials
+
+*** 12:28:45 *** 
+Writing Degree-of-Freedom Sets
+
+*** 12:28:45 *** 
+Writing Loads and Constraints
+
+*** 12:28:45 *** 
+Writing Coordinate Systems
+
+*** 12:28:45 *** 
+Summary of Bulk Data cards written
+
++----------+----------+
+|   NAME   |  NUMBER  |
++----------+----------+
+| CBEAM    | 72       |
+| FORCE    | 1        |
+| GRID     | 60       |
+| MAT1     | 1        |
+| MATT1    | 1        |
+| PARAM    | 6        |
+| PBEAM    | 10       |
+| RBAR     | 36       |
+| SPC      | 6        |
+| TABLEM1  | 3        |
++----------+----------+
+
+*** 12:28:45 *** 
+Nastran Deck Successfully Written
+

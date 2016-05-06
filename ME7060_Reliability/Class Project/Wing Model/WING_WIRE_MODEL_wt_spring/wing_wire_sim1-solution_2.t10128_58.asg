@@ -1,0 +1,30 @@
+Nastran BUFFSIZE=32769 $(c:/program files/siemens/nx 10.0/nxnastran/conf/nast10.rcf[1])
+Nastran BUFFPOOL=20.0X $(c:/program files/siemens/nx 10.0/nxnastran/conf/nast10.rcf[4])
+Nastran DIAGA=128 DIAGB=0 $(c:/program files/siemens/nx 10.0/nxnastran/conf/nast10.rcf[8])
+Nastran SYSTEM(442)=2 $(command line[5])
+Nastran REAL=2147483647 $(program default)
+JID='C:\Users\ado\Documents\WSU Classes\ME7060_Reliability\Class Project\Wing Model\WING_WIRE_MODEL_wt_spring\wing_wire_sim1-solution_2.dat'
+OUT='./wing_wire_sim1-solution_2'
+MEM=1913389056
+MACH='Intel64 Family 6 Model 94 Stepping 3'
+OPER='Windows 8'
+OSV=' '
+MODEL='Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz (DESKTOP-5UE3P8V)'
+CONFIG=8666
+NPROC=8
+symbol=DELDIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/del' $(program default)
+symbol=DEMODIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/demo' $(program default)
+symbol=SSSALTERDIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/misc/sssalter' $(program default)
+symbol=TPLDIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/tpl' $(program default)
+SDIR='c:/users/ado/appdata/local/temp/wing_wire_sim1-solution_2.T10128_58'
+DBS='c:/users/ado/appdata/local/temp/wing_wire_sim1-solution_2.T10128_58'
+SCR=yes
+SMEM=20.0X
+NEWDEL='c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/SSS'
+DEL='NXNDEF'
+AUTH='28000@desktop-5ue3p8v'
+AUTHQUE=0
+MSGCAT='c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/analysis.msg'
+MSGDEST='f06'
+PROG=bundle
+NEWS='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/news.txt'

@@ -1,0 +1,67 @@
+
+*** 13:39:54 *** 
+Starting Nastran Exporter
+
+*** 13:39:54 *** 
+Writing file C:\Users\ado\Documents\WSU Classes\ME7060_Reliability\Class 
+Project\Wing Model\WING2_wt_springs\wing3_sim1-solution_1.dat
+ 
+*** 13:39:54 *** 
+Writing NX NASTRAN 10.0 compatible deck
+
+*** 13:39:54 *** 
+Writing Nastran System section
+
+*** 13:39:54 *** 
+Writing File Management section
+
+*** 13:39:54 *** 
+Writing Executive Control section
+
+*** 13:39:54 *** 
+Writing Case Control section
+
+*** 13:39:54 *** 
+Writing Bulk Data section
+
+*** 13:39:54 *** 
+Writing Nodes
+
+*** 13:39:54 *** 
+Writing Elements
+
+*** 13:39:54 *** 
+Writing Physical Properties
+
+*** 13:39:54 *** 
+Writing Materials
+
+*** 13:39:54 *** 
+Writing Degree-of-Freedom Sets
+
+*** 13:39:54 *** 
+Writing Loads and Constraints
+
+*** 13:39:54 *** 
+Writing Coordinate Systems
+
+*** 13:39:54 *** 
+Summary of Bulk Data cards written
+
++----------+----------+
+|   NAME   |  NUMBER  |
++----------+----------+
+| CBUSH    | 41       |
+| CQUAD4   | 6765     |
+| EIGRL    | 1        |
+| GRID     | 6847     |
+| MAT1     | 1        |
+| PARAM    | 6        |
+| PBUSH    | 1        |
+| PSHELL   | 1        |
+| SPC      | 41       |
++----------+----------+
+
+*** 13:39:54 *** 
+Nastran Deck Successfully Written
+

@@ -1,0 +1,107 @@
+NX Nastran V10.0 (Intel64 Family 6 Model 94 Stepping 3 Windows 8  ) Control File:
+-------------------------------------------------------------------
+Nastran BUFFSIZE=32769 $(c:/program files/siemens/nx 10.0/nxnastran/conf/nast10.rcf[1])
+Nastran BUFFPOOL=20.0X $(c:/program files/siemens/nx 10.0/nxnastran/conf/nast10.rcf[4])
+Nastran DIAGA=128 DIAGB=0 $(c:/program files/siemens/nx 10.0/nxnastran/conf/nast10.rcf[8])
+Nastran SYSTEM(442)=2 $(command line[5])
+Nastran REAL=2147483647 $(program default)
+JID='C:\Users\ado\Documents\WSU Classes\ME7060_Reliability\Class Project\Wing Model\WING2_wt_springs\wing3_sim1-solution_2.dat'
+OUT='./wing3_sim1-solution_2'
+MEM=1913389056
+MACH='Intel64 Family 6 Model 94 Stepping 3'
+OPER='Windows 8'
+OSV=' '
+MODEL='Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz (DESKTOP-5UE3P8V)'
+CONFIG=8666
+NPROC=8
+symbol=DELDIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/del' $(program default)
+symbol=DEMODIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/demo' $(program default)
+symbol=SSSALTERDIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/misc/sssalter' $(program default)
+symbol=TPLDIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/tpl' $(program default)
+SDIR='c:/users/ado/appdata/local/temp/wing3_sim1-solution_2.T12324_8'
+DBS='c:/users/ado/appdata/local/temp/wing3_sim1-solution_2.T12324_8'
+SCR=yes
+SMEM=20.0X
+NEWDEL='c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/SSS'
+DEL='NXNDEF'
+AUTH='28000@desktop-5ue3p8v'
+AUTHQUE=0
+MSGCAT='c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/analysis.msg'
+MSGDEST='f06'
+PROG=bundle
+NEWS='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/news.txt'
+-------------------------------------------------------------------
+NXN_ISHELLPATH=C:\Program Files\Siemens\NX 10.0\NXNASTRAN\bin
+NXN_JIDPATH=
+PATH=c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt;c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/impi/bin;c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/monitor;C:\Program Files\Siemens\NX 10.0\ugii;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Microsoft HPC Pack 2008 R2\Bin\;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\IntelSGXPSW\bin\x64\Release\;C:\Program Files\Intel\IntelSGXPSW\bin\win32\Release\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;c:\Program Files\Intel\WiFi\bin\;c:\Program Files\Common Files\Intel\WirelessCommon\;;C:\Program Files (x86)\Skype\Phone\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\MATLAB\R2015b\bin;C:\SIMULIA\Abaqus\Commands;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\MiKTeX 2.9\miktex\bin\x64\;C:\Program Files\Hewlett-Packard\SimplePass\;C:\Users\ado\Anaconda3;C:\Users\ado\Anaconda3\Scripts;C:\Users\ado\Anaconda3\Library\bin;C:\MIKTEX
+Command Line: wing3_sim1-solution_2.dat prog=bundle old=no scratch=yes sys442=2
+Current Dir: C:\Users\ado\Documents\WSU Classes\ME7060_Reliability\Class Project\Wing Model\WING2_wt_springs
+Executable:  c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/analysis.exe
+NXN_MSG:     stderr
+FPE:         no
+-------------------------------------------------------------------
+Current resource limits:
+ Physical memory:                    16220 MB
+ Physical memory available:          11681 MB
+ Paging file size:                   18652 MB
+ Paging file size available:         13333 MB
+ Virtual memory:                 134217727 MB
+ Virtual memory available:       134217679 MB
+-------------------------------------------------------------------
+System configuration:
+ Hostname:         DESKTOP-5UE3P8V
+ Architecture:     em64tnt
+ Platform:         Intel64 Family 6 Model 94 Stepping 3 Windows 8  
+ Model:            Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz
+ Clock freq.:      2592 MHz
+ Number of CPUs:   8
+ Executable:       standard
+ Raw model ID:     8666
+ Config number:    8666
+ Physical memory:  16220 MB
+ Virtual memory:   18652 MB
+ Numeric format:   32-bit little-endian IEEE.
+ Bytes per word:   4
+ Disk block size:  512 bytes (128 words)
+ Remote shell cmd: "c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/edsrmtcmd.exe" (Windows, UNIX)
+-------------------------------------------------------------------
+NX Nastran started  Wed Apr  6 21:53:08 EDT 2016
+ 21:53:09  Beginning Analysis
+
+ 21:53:09  NX NASTRAN Authorization Information - System Attributes
+ 21:53:09  --------------------------------------------------------
+ 21:53:09  Model: Intel(R) Core(TM) i7-6700HQ CPU
+ 21:53:09  Machine: Intel64 Family 6 Model 94 Steppi
+ 21:53:09  OS: Windows 8
+ 21:53:09  Version:
+ 21:53:09  License File(s): 28000@desktop-5ue3p8v
+
+
+ 21:53:09  NX NASTRAN Licensing Information
+ 21:53:09  -------------------------------
+ 21:53:09  Sold To ID:            1002010 - *SolidSQUAD*
+ 21:53:09  Webkey Access Code:    5555555555
+ 21:53:09  License File Issuer:   UGS
+
+
+ 21:53:09  NX NASTRAN Authorization Information - Checkout Successful
+ 21:53:09  ----------------------------------------------------------
+ 21:53:09  License for module NX Nastran Basic - NX Desktop (Bundle)  checked out successfully
+
+Starting viewer with UGII_MONITOR_DIR set to 'C:\Program Files\Siemens\NX 10.0\nxcae_extras\tmg\exe'
+Starting monitor viewer at C:\Program Files\Siemens\NX 10.0\nxcae_extras\tmg\exe/xcsmon_viewer.exe
+Loading Shared Library C:\Program Files\Siemens\NX 10.0\nxcae_extras\tmg\exe\mayamoncomm.dll
+ 21:53:10  Analysis started.
+ 21:53:10  Geometry access/verification to CAD part initiated (if needed).
+ 21:53:10  Geometry access/verification to CAD part successfully completed (if needed).
+ 21:53:10  Finite element model generation started.
+ 21:53:10  Finite element model generated 41082 degrees of freedom.
+ 21:53:10  Finite element model generation successfully completed.
+ 21:53:10  Application of Loads and Boundary Conditions to the finite element model started.
+ 21:53:10  Application of Loads and Boundary Conditions to the finite element model successfully completed.
+ 21:53:13  NSEXIT: EXIT(0)
+ 21:53:13  Analysis complete  0
+Real:        4.421 seconds ( 0:00:04.421)
+User:        4.156 seconds ( 0:00:04.156)
+Sys:         0.281 seconds ( 0:00:00.281)
+NX Nastran finished Wed Apr  6 21:53:13 EDT 2016

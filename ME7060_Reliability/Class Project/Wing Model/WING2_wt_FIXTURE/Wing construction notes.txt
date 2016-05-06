@@ -1,0 +1,5 @@
+This model was constructed by accounting for the slant in the obtained profile of the wing.
+
+The first model (WING) does not account for this spant.
+
+This variant also includes portion of the fixture.
