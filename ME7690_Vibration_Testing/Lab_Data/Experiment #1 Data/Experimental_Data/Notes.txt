@@ -1,0 +1,9 @@
+- This data was collected for the cantilever system.
+
+- There were total of 5 sampes generated including one for the base.
+
+- Time channels are defined as follows:
+	- Time Channel #1 = Hammer signal (input)
+	- Time Channel #2 = Beam response (output)
+	- Time Channel #3 = empty
+	- Time Channel #4 = Base response (output)

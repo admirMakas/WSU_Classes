@@ -1,0 +1,1 @@
+Trimmed Data only holds "TIME CHANNLE SIGNAL DATA" all other variables were deleted.

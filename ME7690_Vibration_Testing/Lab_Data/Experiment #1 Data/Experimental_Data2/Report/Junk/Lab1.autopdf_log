@@ -1,0 +1,43 @@
+%in BeamSideProfile.jpg
+\autopdf@SetMDF{BeamSideProfile.jpg}{F0E5FA1E3550B9C13075FFDBECE79E39}
+%out BeamSideProfile.pdf
+%in BeamWtWeight2.jpg
+\autopdf@SetMDF{BeamWtWeight2.jpg}{250FD6F517FF457B853D96FEC075FBB2}
+%out BeamWtWeight2.pdf
+%in BeamNoWeight.jpg
+\autopdf@SetMDF{BeamNoWeight.jpg}{0CCF608BE5116097E87B9CD72254D158}
+%out BeamNoWeight.pdf
+%in TopShot_mod.jpg
+\autopdf@SetMDF{TopShot_mod.jpg}{F6C810B5C668FFAD88704B000AE39216}
+%out TopShot_mod.pdf
+%in base_wt_weight_timeData.jpg
+\autopdf@SetMDF{base_wt_weight_timeData.jpg}{CBB68EFA667651B6797BD6D61CEE2ABA}
+%out base_wt_weight_timeData.pdf
+%in LOC4_wt_weight_timeData.jpg
+\autopdf@SetMDF{LOC4_wt_weight_timeData.jpg}{8EC4F4C3B53B8ED1E0DA54AF394AB3DD}
+%out LOC4_wt_weight_timeData.pdf
+%in base_wt_weight_input.jpg
+\autopdf@SetMDF{base_wt_weight_input.jpg}{CE30B8C8975AFB28C7B91E933A623A19}
+%out base_wt_weight_input.pdf
+%in LOC4_wt_weight_input.jpg
+\autopdf@SetMDF{LOC4_wt_weight_input.jpg}{88FF6DE4A571C9527EFF3BEEA2E4C9AC}
+%out LOC4_wt_weight_input.pdf
+%in base_wo_weight_timeData.jpg
+\autopdf@SetMDF{base_wo_weight_timeData.jpg}{6EAF75D4255BAA00D4AF7A9630ACAB75}
+%out base_wo_weight_timeData.pdf
+%in LOC4_wo_weight_timeData.jpg
+\autopdf@SetMDF{LOC4_wo_weight_timeData.jpg}{22D8975060D5FDE915E323FA9DC2BF16}
+%out LOC4_wo_weight_timeData.pdf
+%in base_wo_weight_input.jpg
+\autopdf@SetMDF{base_wo_weight_input.jpg}{233BDB01EC3C1408C7E87A23C38CAC82}
+%out base_wo_weight_input.pdf
+%in LOC4_wo_weight_input.jpg
+\autopdf@SetMDF{LOC4_wo_weight_input.jpg}{7A6D932A8AB34D440CC8591A8DC6CDD0}
+%out LOC4_wo_weight_input.pdf
+%in base_wo_weight_input.jpg
+\autopdf@SetMDF{base_wo_weight_input.jpg}{233BDB01EC3C1408C7E87A23C38CAC82}
+%out base_wo_weight_input.pdf
+%in LOC4_wo_weight_input.jpg
+\autopdf@SetMDF{LOC4_wo_weight_input.jpg}{7A6D932A8AB34D440CC8591A8DC6CDD0}
+%out LOC4_wo_weight_input.pdf
+

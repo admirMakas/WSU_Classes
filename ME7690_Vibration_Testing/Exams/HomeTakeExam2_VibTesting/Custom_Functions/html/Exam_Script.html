@@ -1,0 +1,526 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Exam_Script</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-04-02"><meta name="DC.source" content="Exam_Script.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1></h1><!--introduction--><!--/introduction--><pre class="codeinput">clear <span class="string">all</span>
+clc
+
+syms <span class="string">w</span>
+
+<span class="comment">% define pertinent matrices for problem 2</span>
+M=[2 0; 0 7];
+K=[2 -1; -1 2];
+Cd=[0.1 -0.1; -0.1 0.2];
+
+<span class="comment">% define A matrix</span>
+MK=-K/M;
+MC=-Cd/M;
+
+display(<span class="string">'A matrix below'</span>)
+A=[zeros(2) eye(2); MK' MC']
+
+<span class="comment">% Define B matrix</span>
+Btilde=[1 -1];
+
+B2= inv(M)*Btilde';
+
+display(<span class="string">'B matrix below'</span>)
+B=[0 0 B2']'
+
+<span class="comment">% -----------------------Following steps calculate FRF---------------------</span>
+<span class="comment">% -------------------------------------------------------------------------</span>
+Iw = w*j*eye(4);
+
+<span class="comment">% define term (jwI - A)</span>
+display(<span class="string">'(jwI - A) below'</span>)
+A1=Iw-A
+
+<span class="comment">% calculate (jwI - A)^-1</span>
+display(<span class="string">'(jwI - A)^-1 below'</span>)
+A1inv = inv(A1)
+
+<span class="comment">% Next set of code pertains specifically to part a-------------------------</span>
+display(<span class="string">'"C" and "D" Definitions of 2a'</span>)
+Ca = [1 0 0 0]
+
+Da=0
+
+<span class="comment">% FRF for part a</span>
+display(<span class="string">'FRF for part a below'</span>)
+Ta=Ca*A1inv*B + Da
+
+w1=[0:0.001:6];
+
+TaEval=eval(subs(Ta, w1));
+
+<span class="comment">% Next set of code pertains specifically to part b-------------------------</span>
+display(<span class="string">'"C" and "D "Definitions of 2b'</span>)
+Cb = [-1 0.5 -0.05 0.05]
+
+Db = 0.5
+
+<span class="comment">% FRF for part b</span>
+display(<span class="string">'FRF for part b below'</span>)
+Tb=Ca*A1inv*B + Db
+
+TbEval=eval(subs(Tb, w1));
+
+<span class="comment">% Define phase for part a and b</span>
+phase_a=unwrap(angle(TaEval))*180/pi;
+phase_b=unwrap(angle(TbEval))*180/pi;
+
+<span class="comment">%</span>
+</pre><pre class="codeoutput">A matrix below
+
+A =
+
+         0         0    1.0000         0
+         0         0         0    1.0000
+   -1.0000    0.5000   -0.0500    0.0500
+    0.1429   -0.2857    0.0143   -0.0286
+
+B matrix below
+
+B =
+
+         0
+         0
+    0.5000
+   -0.1429
+
+(jwI - A) below
+ 
+A1 =
+ 
+[ w*1i,    0,          -1,           0]
+[    0, w*1i,           0,          -1]
+[    1, -1/2, 1/20 + w*1i,       -1/20]
+[ -1/7,  2/7,       -1/70, 1/35 + w*1i]
+ 
+(jwI - A)^-1 below
+ 
+A1inv =
+ 
+[ -(- 4200*w^3 + w^2*330i + 1203*w - 30i)/(3*(w^4*1400i + 110*w^3 - w^2*1801i - 40*w + 300i)),                                -(700*w)/(w^4*1400i + 110*w^3 - w^2*1801i - 40*w + 300i),       (40*(- 35*w^2 + w*1i + 10))/(1400*w^4 - w^3*110i - 1801*w^2 + w*40i + 300),                      -(70*(w - 10i))/(w^4*1400i + 110*w^3 - w^2*1801i - 40*w + 300i)]
+[                           -(10*(20*w + 1i))/(w^4*1400i + 110*w^3 - w^2*1801i - 40*w + 300i), -(- 1400*w^3 + w^2*110i + 1401*w - 30i)/(w^4*1400i + 110*w^3 - w^2*1801i - 40*w + 300i),                  -(20*(w - 10i))/(w^4*1400i + 110*w^3 - w^2*1801i - 40*w + 300i),           (70*(- 20*w^2 + w*1i + 20))/(1400*w^4 - w^3*110i - 1801*w^2 + w*40i + 300)]
+[                -(10*(- 140*w^2 + w*3i + 30))/(1400*w^4 - w^3*110i - 1801*w^2 + w*40i + 300),                               -(700*w^2)/(1400*w^4 - w^3*110i - 1801*w^2 + w*40i + 300), -(40*(- 35*w^3 + w^2*1i + 10*w))/(w^4*1400i + 110*w^3 - w^2*1801i - 40*w + 300i),                  (70*(- w^2 + w*10i))/(1400*w^4 - w^3*110i - 1801*w^2 + w*40i + 300)]
+[                        (w*(- 1 + w*20i)*10i)/(1400*w^4 - w^3*110i - 1801*w^2 + w*40i + 300),             -(10*(- 40*w^2 + w*1i + 30))/(1400*w^4 - w^3*110i - 1801*w^2 + w*40i + 300),        (20*(- 3*w^2 + w*30i))/(3*(1400*w^4 - w^3*110i - 1801*w^2 + w*40i + 300)), -(70*(- 60*w^3 + w^2*3i + 60*w))/(3*(w^4*1400i + 110*w^3 - w^2*1801i - 40*w + 300i))]
+ 
+"C" and "D" Definitions of 2a
+
+Ca =
+
+     1     0     0     0
+
+
+Da =
+
+     0
+
+FRF for part a below
+ 
+Ta =
+ 
+(20*(- 35*w^2 + w*1i + 10))/(1400*w^4 - w^3*110i - 1801*w^2 + w*40i + 300) + (10*(w - 10i))/(w^4*1400i + 110*w^3 - w^2*1801i - 40*w + 300i)
+ 
+"C" and "D "Definitions of 2b
+
+Cb =
+
+   -1.0000    0.5000   -0.0500    0.0500
+
+
+Db =
+
+    0.5000
+
+FRF for part b below
+ 
+Tb =
+ 
+(20*(- 35*w^2 + w*1i + 10))/(1400*w^4 - w^3*110i - 1801*w^2 + w*40i + 300) + (10*(w - 10i))/(w^4*1400i + 110*w^3 - w^2*1801i - 40*w + 300i) + 1/2
+ 
+</pre><pre class="codeinput"><span class="comment">%Define problem 4 and use lsim to solve the problem</span>
+
+t=[0:0.001:10];
+u=5*sin(10*t);
+
+<span class="comment">% system defined in state space, then it will be converted into a</span>
+<span class="comment">% transfer function_this is for part 2b</span>
+sys = ss(A, B, Cb, Db);
+<span class="comment">%sys = ss(A, B, Ca, Da);</span>
+
+<span class="comment">% define transfer function based on the state space model</span>
+display(<span class="string">'Transfer function for Prob 4 used in "Isim" call'</span>)
+H=tf(sys)
+
+<span class="comment">% define intial condition (not required to run the model)</span>
+xO = [0, 0, 0, 0];
+
+y = lsim(H, u, t, xO);
+
+<span class="comment">%define numerator and denominator of transfer function H for plots</span>
+num = [0.5, 0.007143, 0.07143, 0, 0];
+den = [1, 0.07857, 1.286, 0.02857, 0.2143];
+
+<span class="comment">%w1 = 0:0.001:6;</span>
+P = freqs(num, den, w1);
+mag = abs(P);
+phase = unwrap(angle(P));
+
+phasedeg = phase*(180/pi);
+</pre><pre class="codeoutput">Transfer function for Prob 4 used in "Isim" call
+
+H =
+ 
+         0.5 s^4 + 0.007143 s^3 + 0.07143 s^2
+  --------------------------------------------------
+  s^4 + 0.07857 s^3 + 1.286 s^2 + 0.02857 s + 0.2143
+ 
+Continuous-time transfer function.
+
+</pre><p>Plotting section</p><pre class="codeinput"><span class="comment">%Plot frequency response functions</span>
+plot(w1, 20*log10(abs(TaEval)), <span class="string">'k-'</span>, <span class="string">'linewidth'</span>, 2);
+hold <span class="string">on</span>
+plot(w1, 20*log10(abs(TbEval)), <span class="string">'r--'</span>, <span class="string">'linewidth'</span>, 2);
+hold <span class="string">on</span>
+plot(w1, 20*log10(mag), <span class="string">'-.g'</span>, <span class="string">'linewidth'</span>, 2);
+axis([0 inf -60 22]);
+legend(<span class="string">'2a Displacement x_1'</span>, <span class="string">'2b Acceleration x_1'</span>, <span class="string">'Prob 4 SS Solve'</span>, <span class="keyword">...</span>
+    <span class="string">'Location'</span>, <span class="string">'Southeast'</span>);
+title(<span class="string">'FRF Estimates, Prob. 2 amd 4'</span>);
+xlabel(<span class="string">'Frequency, Hz'</span>);
+ylabel(<span class="string">'Mag (dB)'</span>);
+grid <span class="string">on</span>
+
+<span class="comment">%Plot phase diagrams</span>
+figure
+plot(w1, phase_a, <span class="string">'k-'</span>, <span class="string">'linewidth'</span>, 3);
+hold <span class="string">on</span>
+plot(w1, phase_b, <span class="string">'r--'</span>, <span class="string">'linewidth'</span>, 2);
+hold <span class="string">on</span>
+plot(w1, phasedeg-180, <span class="string">'--g'</span>, <span class="string">'linewidth'</span>, 2);
+legend(<span class="string">'2a Displacement x_1'</span>, <span class="string">'2b Acceleration x_1'</span>, <span class="string">'Prob 4 SS Solve'</span>, <span class="keyword">...</span>
+    <span class="string">'Location'</span>, <span class="string">'Northeast'</span>);
+title(<span class="string">'Phase Estimates, Prob. 2 amd 4'</span>);
+xlabel(<span class="string">'Frequency, Hz'</span>);
+ylabel(<span class="string">'Angle Deg.'</span>);
+grid <span class="string">on</span>
+
+<span class="comment">%Plot time response obtained using Isim</span>
+figure
+plot(t, y, <span class="string">'k-'</span>, <span class="string">'linewidth'</span>, 2);
+hold <span class="string">on</span>
+plot(t, u, <span class="string">'--r'</span>, <span class="string">'linewidth'</span>, 2);
+legend(<span class="string">'Outout'</span>, <span class="string">'Input'</span>, <span class="keyword">...</span>
+    <span class="string">'Location'</span>, <span class="string">'Northeast'</span>);
+axis([0 inf -6 6]);
+title(<span class="string">'Time Response of System'</span>);
+xlabel(<span class="string">'Time, Sec'</span>);
+ylabel(<span class="string">'Amplitude'</span>);
+</pre><img vspace="5" hspace="5" src="Exam_Script_01.png" alt=""> <img vspace="5" hspace="5" src="Exam_Script_02.png" alt=""> <img vspace="5" hspace="5" src="Exam_Script_03.png" alt=""> <p>Sub-Plot section</p><pre class="codeinput"><span class="comment">%Plot FRF for 2a</span>
+figure
+subplot(211);
+plot(w1, 20*log10(abs(TaEval)), <span class="string">'r-'</span>, <span class="string">'linewidth'</span>, 2);
+title(<span class="string">'FRF Estimate, 2a'</span>);
+xlabel(<span class="string">'Frequency, Hz'</span>);
+ylabel(<span class="string">'Mag (dB)'</span>);
+grid <span class="string">on</span>
+subplot(212);
+plot(w1, phase_a, <span class="string">'r-'</span>, <span class="string">'linewidth'</span>, 2);
+title(<span class="string">'Phase Estimate, 2a'</span>);
+xlabel(<span class="string">'Frequency, Hz'</span>);
+ylabel(<span class="string">'Angle Deg.'</span>);
+grid <span class="string">on</span>
+
+<span class="comment">%Plot FRF for 2b</span>
+figure
+subplot(211);
+plot(w1, 20*log10(abs(TbEval)), <span class="string">'r-'</span>, <span class="string">'linewidth'</span>, 2);
+title(<span class="string">'FRF Estimate, 2b'</span>);
+xlabel(<span class="string">'Frequency, Hz'</span>);
+ylabel(<span class="string">'Mag (dB)'</span>);
+grid <span class="string">on</span>
+subplot(212);
+plot(w1, phase_b, <span class="string">'r-'</span>, <span class="string">'linewidth'</span>, 2);
+title(<span class="string">'Phase Estimate, 2b'</span>);
+xlabel(<span class="string">'Frequency, Hz'</span>);
+ylabel(<span class="string">'Angle Deg.'</span>);
+grid <span class="string">on</span>
+
+<span class="comment">%Plot FRF for Prob 4</span>
+figure
+subplot(211);
+plot(w1, 20*log10(mag), <span class="string">'r-'</span>, <span class="string">'linewidth'</span>, 2);
+axis([0 inf -60 22])
+title(<span class="string">'FRF Estimate, Prob 4'</span>);
+xlabel(<span class="string">'Frequency, Hz'</span>);
+ylabel(<span class="string">'Mag (dB)'</span>);
+grid <span class="string">on</span>
+subplot(212);
+plot(w1, phasedeg-180, <span class="string">'r-'</span>, <span class="string">'linewidth'</span>, 2);
+title(<span class="string">'Phase Estimate, Prob 4'</span>);
+xlabel(<span class="string">'Frequency, Hz'</span>);
+ylabel(<span class="string">'Angle Deg.'</span>);
+grid <span class="string">on</span>
+</pre><img vspace="5" hspace="5" src="Exam_Script_04.png" alt=""> <img vspace="5" hspace="5" src="Exam_Script_05.png" alt=""> <img vspace="5" hspace="5" src="Exam_Script_06.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+
+%%
+clear all
+clc
+
+syms w
+
+% define pertinent matrices for problem 2
+M=[2 0; 0 7];
+K=[2 -1; -1 2];
+Cd=[0.1 -0.1; -0.1 0.2];
+
+% define A matrix
+MK=-K/M;
+MC=-Cd/M;
+
+display('A matrix below')
+A=[zeros(2) eye(2); MK' MC']
+
+% Define B matrix
+Btilde=[1 -1];
+
+B2= inv(M)*Btilde';
+
+display('B matrix below')
+B=[0 0 B2']'
+
+% REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-Following steps calculate FRFREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+% REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+Iw = w*j*eye(4);
+
+% define term (jwI - A)
+display('(jwI - A) below')
+A1=Iw-A
+
+% calculate (jwI - A)^-1
+display('(jwI - A)^-1 below')
+A1inv = inv(A1)
+
+% Next set of code pertains specifically to part aREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+display('"C" and "D" Definitions of 2a')
+Ca = [1 0 0 0]
+
+Da=0
+
+% FRF for part a
+display('FRF for part a below')
+Ta=Ca*A1inv*B + Da
+
+w1=[0:0.001:6];
+
+TaEval=eval(subs(Ta, w1));
+
+% Next set of code pertains specifically to part bREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+display('"C" and "D "Definitions of 2b')
+Cb = [-1 0.5 -0.05 0.05]
+
+Db = 0.5
+
+% FRF for part b
+display('FRF for part b below')
+Tb=Ca*A1inv*B + Db
+
+TbEval=eval(subs(Tb, w1));
+
+% Define phase for part a and b
+phase_a=unwrap(angle(TaEval))*180/pi;
+phase_b=unwrap(angle(TbEval))*180/pi;
+
+%
+%%
+%Define problem 4 and use lsim to solve the problem
+
+t=[0:0.001:10];
+u=5*sin(10*t);
+
+% system defined in state space, then it will be converted into a
+% transfer function_this is for part 2b
+sys = ss(A, B, Cb, Db);
+%sys = ss(A, B, Ca, Da);
+
+% define transfer function based on the state space model
+display('Transfer function for Prob 4 used in "Isim" call')
+H=tf(sys)
+
+% define intial condition (not required to run the model)
+xO = [0, 0, 0, 0];
+
+y = lsim(H, u, t, xO);
+
+%define numerator and denominator of transfer function H for plots
+num = [0.5, 0.007143, 0.07143, 0, 0];
+den = [1, 0.07857, 1.286, 0.02857, 0.2143];
+
+%w1 = 0:0.001:6;
+P = freqs(num, den, w1);
+mag = abs(P);
+phase = unwrap(angle(P));
+
+phasedeg = phase*(180/pi);
+
+%%
+% Plotting section
+
+%Plot frequency response functions
+plot(w1, 20*log10(abs(TaEval)), 'k-', 'linewidth', 2);
+hold on
+plot(w1, 20*log10(abs(TbEval)), 'rREPLACE_WITH_DASH_DASH', 'linewidth', 2);
+hold on
+plot(w1, 20*log10(mag), '-.g', 'linewidth', 2);
+axis([0 inf -60 22]);
+legend('2a Displacement x_1', '2b Acceleration x_1', 'Prob 4 SS Solve', ...
+    'Location', 'Southeast');
+title('FRF Estimates, Prob. 2 amd 4');
+xlabel('Frequency, Hz');
+ylabel('Mag (dB)');
+grid on
+
+%Plot phase diagrams
+figure
+plot(w1, phase_a, 'k-', 'linewidth', 3);
+hold on
+plot(w1, phase_b, 'rREPLACE_WITH_DASH_DASH', 'linewidth', 2);
+hold on
+plot(w1, phasedeg-180, 'REPLACE_WITH_DASH_DASHg', 'linewidth', 2);
+legend('2a Displacement x_1', '2b Acceleration x_1', 'Prob 4 SS Solve', ...
+    'Location', 'Northeast');
+title('Phase Estimates, Prob. 2 amd 4');
+xlabel('Frequency, Hz');
+ylabel('Angle Deg.');
+grid on
+
+%Plot time response obtained using Isim
+figure
+plot(t, y, 'k-', 'linewidth', 2);
+hold on
+plot(t, u, 'REPLACE_WITH_DASH_DASHr', 'linewidth', 2);
+legend('Outout', 'Input', ...
+    'Location', 'Northeast');
+axis([0 inf -6 6]);
+title('Time Response of System');
+xlabel('Time, Sec');
+ylabel('Amplitude');
+
+%%
+% Sub-Plot section
+
+%Plot FRF for 2a
+figure
+subplot(211);
+plot(w1, 20*log10(abs(TaEval)), 'r-', 'linewidth', 2);
+title('FRF Estimate, 2a');
+xlabel('Frequency, Hz');
+ylabel('Mag (dB)');
+grid on
+subplot(212);
+plot(w1, phase_a, 'r-', 'linewidth', 2);
+title('Phase Estimate, 2a');
+xlabel('Frequency, Hz');
+ylabel('Angle Deg.');
+grid on
+
+%Plot FRF for 2b
+figure
+subplot(211);
+plot(w1, 20*log10(abs(TbEval)), 'r-', 'linewidth', 2);
+title('FRF Estimate, 2b');
+xlabel('Frequency, Hz');
+ylabel('Mag (dB)');
+grid on
+subplot(212);
+plot(w1, phase_b, 'r-', 'linewidth', 2);
+title('Phase Estimate, 2b');
+xlabel('Frequency, Hz');
+ylabel('Angle Deg.');
+grid on
+
+%Plot FRF for Prob 4
+figure
+subplot(211);
+plot(w1, 20*log10(mag), 'r-', 'linewidth', 2);
+axis([0 inf -60 22])
+title('FRF Estimate, Prob 4');
+xlabel('Frequency, Hz');
+ylabel('Mag (dB)');
+grid on
+subplot(212);
+plot(w1, phasedeg-180, 'r-', 'linewidth', 2);
+title('Phase Estimate, Prob 4');
+xlabel('Frequency, Hz');
+ylabel('Angle Deg.');
+grid on
+
+##### SOURCE END #####
+--></body></html>
