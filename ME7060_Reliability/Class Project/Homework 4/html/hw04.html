@@ -1,0 +1,517 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>hw04</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-04-06"><meta name="DC.source" content="hw04.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Homework 4                                    Student:      Daniel Clark</a></li><li><a href="#2">Problem</a></li><li><a href="#3">Displacement Equation</a></li><li><a href="#4">Constants</a></li><li><a href="#5">Always Normal Variables</a></li><li><a href="#6">Assumed Normal Variable</a></li><li><a href="#7">Problem 1</a></li><li><a href="#8">MCS</a></li><li><a href="#9">Solution</a></li><li><a href="#10">Problem 2</a></li><li><a href="#11">Solution</a></li><li><a href="#12">Problem 3</a></li><li><a href="#13">Solution</a></li><li><a href="#14">Problem 4</a></li><li><a href="#15">log Normal</a></li><li><a href="#16">MCS</a></li><li><a href="#17">Solution</a></li></ul></div><h2>Homework 4                                    Student:      Daniel Clark<a name="1"></a></h2><pre class="codeinput">clear <span class="string">all</span>                                      <span class="comment">% Instructor: Dr. Ha-Rok Bae</span>
+close <span class="string">all</span>                                      <span class="comment">% Class: ME 7060 Spring 2016</span>
+clc
+format <span class="string">shorte</span>, warning(<span class="string">'off'</span>)
+</pre><h2>Problem<a name="2"></a></h2><p>The failure event is defined as <img src="hw04_eq04060734400178348100.png" alt="$delta_{max} &gt; 2.0$">. Answer the questions below.</p><h2>Displacement Equation<a name="3"></a></h2><pre class="codeinput">delta_max = @(P,L,E,I,w) (P.*L.^3)./ (48.*E.*I) + (5*w.*L.^4)./(385.*E.*I);
+</pre><h2>Constants<a name="4"></a></h2><pre class="codeinput">L = 30*12;                  <span class="comment">% was ft now in</span>
+I = 1.33*10^3;              <span class="comment">% in^4</span>
+</pre><h2>Always Normal Variables<a name="5"></a></h2><pre class="codeinput">mu_P = 50*10^3;             <span class="comment">% was kip now lbs</span>
+mu_E = 29*10^6;             <span class="comment">% lb/in^2</span>
+sigma_P = 10*10^3;          <span class="comment">% was kip now lbs</span>
+sigma_E = 2*10^6;           <span class="comment">% lb/in^2</span>
+</pre><h2>Assumed Normal Variable<a name="6"></a></h2><pre class="codeinput">mu_W = (1/12)*1000;                <span class="comment">% was kip/ft now lbs/in</span>
+sigma_W = (0.1/12)*1000;           <span class="comment">% was kip/ft now lbs/in</span>
+</pre><h2>Problem 1<a name="7"></a></h2><p>Implement your MVFOSM matlab codes and estimate the probability of failure event. (For this question, assume w is a normal variable with a mean of 1 kip/ft and a standard deviation of 0.1 kip/ft.)</p><h2>MCS<a name="8"></a></h2><pre class="codeinput">Number_of_runs = 10^6;
+P_v = mu_P + sigma_P.*icdf(<span class="string">'normal'</span>,rand(Number_of_runs,1),0,1);
+E_v = mu_E + sigma_E.*icdf(<span class="string">'normal'</span>,rand(Number_of_runs,1),0,1);
+W_v = mu_W + sigma_W.*icdf(<span class="string">'normal'</span>,rand(Number_of_runs,1),0,1);
+
+X = [P_v, E_v, W_v];
+[responseVector,~] = LSB(X);
+pf_true_MCS = sum(responseVector &lt; 0) / Number_of_runs
+</pre><pre class="codeoutput">
+pf_true_MCS =
+
+   1.7800e-01
+
+</pre><h2>Solution<a name="9"></a></h2><pre class="codeinput">X1 = [mu_P, mu_E, mu_W];
+[g, gDelta] = LSB(X1);
+gtil = g + gDelta(1) * (X1(1) - mu_P) + gDelta(2) * (X1(2) - mu_E) <span class="keyword">...</span>
+    + gDelta(3) * (X1(3) - mu_W);
+sigma_g = sqrt( (gDelta(1) * sigma_P)^2 + (gDelta(2) * sigma_E)^2 <span class="keyword">...</span>
+    + (gDelta(3) * sigma_W)^2 );
+beta = gtil/sigma_g;
+pf = 1 - cdf(<span class="string">'normal'</span>,beta,0,1)
+</pre><pre class="codeoutput">
+pf =
+
+   1.7107e-01
+
+</pre><h2>Problem 2<a name="10"></a></h2><p>Build your Hasofer Lind (HL) Method and estimate the failure probability. (For this question, assume w is a normal variable with a mean of 1 kip/ft and a standard deviation of 0.1 kip/ft.)</p><h2>Solution<a name="11"></a></h2><p>Step A Iteration 1 Set the mean value point as an initial design point and set the required <img src="hw04_eq17331442575217596290.png" alt="$\beta$"> convergence tolerance to <img src="hw04_eq06150004693134533229.png" alt="$\epsilon_r = 0.001$"> Compute the limit-state function value and gradients at the mean value point:</p><pre class="codeinput">betaHistory = [];
+X1 = [mu_P, mu_E, mu_W];
+[g, gDelta] = LSB(X1);
+gtil = g; <span class="comment">% For the first point</span>
+sigma_g = sqrt( (gDelta(1) * sigma_P)^2 + (gDelta(2) * sigma_E)^2 <span class="keyword">...</span>
+    + (gDelta(3) * sigma_W)^2 );
+
+<span class="comment">% Step B Compute the initial beta using the mean-value method and its</span>
+<span class="comment">% direction cosine</span>
+beta = gtil/sigma_g;
+betaHistory = [betaHistory; beta];
+
+alphaP = -gDelta(1)*sigma_P / sigma_g;
+alphaE = -gDelta(2)*sigma_E / sigma_g;
+alphaW = -gDelta(3)*sigma_W / sigma_g;
+
+<span class="comment">% Step C Compute a new design point 2 X from Equation</span>
+Xnew = [mu_P+beta*sigma_P*alphaP, mu_E+beta*sigma_E*alphaE,<span class="keyword">...</span>
+    mu_W+beta*sigma_W*alphaW]
+
+U_P = ( Xnew(1) - mu_P ) / sigma_P;
+U_E = ( Xnew(2) - mu_E ) / sigma_E;
+U_W = ( Xnew(3) - mu_W ) / sigma_W;
+beta_previous = 1000; <span class="comment">% helps with the loop</span>
+
+<span class="keyword">while</span> (beta_previous - beta) &gt; 0.00000001
+<span class="comment">% Iteration 2: Step A</span>
+beta_previous = beta;
+[g, gDelta] = LSB(Xnew);
+
+gtil = g - (gDelta(1)*U_P*sigma_P + gDelta(2)*U_E*sigma_E  <span class="keyword">...</span>
+    + gDelta(3)*U_W*sigma_W);
+sigma_g = sqrt( (gDelta(1) * sigma_P)^2 + (gDelta(2) * sigma_E)^2 <span class="keyword">...</span>
+    + (gDelta(3) * sigma_W)^2 );
+beta = gtil/sigma_g;
+
+alphaP = -gDelta(1)*sigma_P / sigma_g;
+alphaE = -gDelta(2)*sigma_E / sigma_g;
+alphaW = -gDelta(3)*sigma_W / sigma_g;
+
+Xnew = [mu_P+beta*sigma_P*alphaP, mu_E+beta*sigma_E*alphaE,<span class="keyword">...</span>
+    mu_W+beta*sigma_W*alphaW];
+
+U_P = ( Xnew(1) - mu_P ) / sigma_P;
+U_E = ( Xnew(2) - mu_E ) / sigma_E;
+U_W = ( Xnew(3) - mu_W ) / sigma_W;
+betaHistory = [betaHistory; beta];
+
+<span class="keyword">end</span>
+
+betaHistory
+pf = 1 - cdf(<span class="string">'normal'</span>,beta,0,1)
+</pre><pre class="codeoutput">
+Xnew =
+
+   5.8465e+04   2.8198e+07   8.4652e+01
+
+
+betaHistory =
+
+   9.4995e-01
+   9.2277e-01
+   9.2284e-01
+
+
+pf =
+
+   1.7805e-01
+
+</pre><h2>Problem 3<a name="12"></a></h2><p>Build a quadratic regression model of LSF with the 3-level samples within the ranges of &plusmn;3? and make an estimation of the failure probability by running MCS with 1 million samples generated from the regression model. (For this question, assume w is a normal variable with a mean of 1 kip/ft and a standard deviation of 0.1 kip/ft.)</p><h2>Solution<a name="13"></a></h2><pre class="codeinput">Design = fracfact(<span class="string">'a b c'</span>);
+Design = [Design; 0,0,0]*3;
+Design(:,1) = Design(:,1)*sigma_P; Design(:,2) = Design(:,2)*sigma_E;
+Design(:,3) = Design(:,3)*sigma_W;
+Means = [mu_P*ones(length(Design),1), mu_E*ones(length(Design),1), <span class="keyword">...</span>
+    mu_W*ones(length(Design),1)];
+Samples = Means + Design;
+[SampleResponse, ~] = LSB(Samples);
+Tables = fitlm(Samples,SampleResponse,<span class="string">'purequadratic'</span>);
+b = table2array(Tables.Coefficients(:,1));
+LSF = @(P, E, W) b(1) + b(2).*P + b(3).*E + b(4).*W + <span class="keyword">...</span>
+    b(5).*P.^2 + b(6).*E.^2 + b(7).*W.^2;
+
+Number_of_runs = 10^6;
+P_v = mu_P + sigma_P.*icdf(<span class="string">'normal'</span>,rand(Number_of_runs,1),0,1);
+E_v = mu_E + sigma_E.*icdf(<span class="string">'normal'</span>,rand(Number_of_runs,1),0,1);
+W_v = mu_W + sigma_W.*icdf(<span class="string">'normal'</span>,rand(Number_of_runs,1),0,1);
+
+responseVector = LSF(P_v, E_v, W_v);
+pf = sum(responseVector &lt; 0) / Number_of_runs
+</pre><pre class="codeoutput">
+pf =
+
+   1.8803e-01
+
+</pre><h2>Problem 4<a name="14"></a></h2><p>Build your Hasofer Lind &#150; Rackwitz Fiessler (HL-RF) Method and estimate the failure probability. (For this question, assume w is following a lognormal distribution with a mean of 1 kip/ft and a standard deviation of 0.1 kip/ft.)</p><h2>log Normal<a name="15"></a></h2><pre class="codeinput">mu_w = 1*10^3/12;                   <span class="comment">% was kip/ft now lbs/in</span>
+sigma_w = 0.1*10^3/12;              <span class="comment">% was kip/ft now lbs/in</span>
+mu_log_w = log((mu_w^2)/sqrt(sigma_w^2+mu_w^2));
+sigma_log_w = sqrt(log((sigma_w^2/(mu_w^2))+1));
+CDF = @(w) cdf(<span class="string">'lognormal'</span>, w, mu_log_w, sigma_log_w);
+PDF = @(w) pdf(<span class="string">'lognormal'</span>, w, mu_log_w, sigma_log_w);
+</pre><h2>MCS<a name="16"></a></h2><pre class="codeinput">Number_of_runs = 10^6;
+P_v = mu_P + sigma_P.*icdf(<span class="string">'normal'</span>,rand(Number_of_runs,1),0,1);
+E_v = mu_E + sigma_E.*icdf(<span class="string">'normal'</span>,rand(Number_of_runs,1),0,1);
+W_v = exp(mu_log_w + sigma_log_w.*icdf(<span class="string">'normal'</span>,rand(Number_of_runs,1),0,1));
+
+X = [P_v, E_v, W_v];
+[responseVector,~] = LSB(X);
+pf_true_MCS = sum(responseVector &lt; 0) / Number_of_runs
+</pre><pre class="codeoutput">
+pf_true_MCS =
+
+   1.7706e-01
+
+</pre><h2>Solution<a name="17"></a></h2><pre class="codeinput">betaHistory = [];
+sigma_W = pdf(<span class="string">'norm'</span>,icdf(<span class="string">'norm'</span>,CDF(mu_W),0,1),0,1)/PDF(mu_W);
+mu_W = mu_W-icdf(<span class="string">'norm'</span>,CDF(mu_W),0,1)*sigma_W;
+X1 = [mu_P, mu_E, mu_W];
+
+[g, gDelta] = LSB(X1);
+gtil = g; <span class="comment">% For the first point</span>
+sigma_g = sqrt( (gDelta(1) * sigma_P)^2 + (gDelta(2) * sigma_E)^2 <span class="keyword">...</span>
+    + (gDelta(3) * sigma_W)^2 );
+
+<span class="comment">% Step B Compute the initial beta using the mean-value method and its</span>
+<span class="comment">% direction cosine</span>
+beta = gtil/sigma_g;
+betaHistory = [betaHistory; beta];
+
+alphaP = -gDelta(1)*sigma_P / sigma_g;
+alphaE = -gDelta(2)*sigma_E / sigma_g;
+alphaW = -gDelta(3)*sigma_W / sigma_g;
+
+<span class="comment">% Step C Compute a new design point 2 X from Equation</span>
+Xnew = [mu_P+beta*sigma_P*alphaP, mu_E+beta*sigma_E*alphaE,<span class="keyword">...</span>
+    mu_W+beta*sigma_W*alphaW];
+
+U_P = ( Xnew(1) - mu_P ) / sigma_P;
+U_E = ( Xnew(2) - mu_E ) / sigma_E;
+U_W = ( Xnew(3) - mu_W ) / sigma_W;
+beta_previous = 1000; <span class="comment">% helps with the loop</span>
+
+<span class="keyword">while</span> (beta_previous - beta) &gt; 0.00000001
+<span class="comment">% Iteration 2: Step A</span>
+beta_previous = beta;
+sigma_W = pdf(<span class="string">'norm'</span>,icdf(<span class="string">'norm'</span>,CDF(mu_W),0,1),0,1)/PDF(mu_W);
+mu_W = mu_W-icdf(<span class="string">'norm'</span>,CDF(mu_W),0,1)*sigma_W;
+
+[g, gDelta] = LSB(Xnew);
+
+gtil = g - (gDelta(1)*U_P*sigma_P + gDelta(2)*U_E*sigma_E  <span class="keyword">...</span>
+    + gDelta(3)*U_W*sigma_W);
+sigma_g = sqrt( (gDelta(1) * sigma_P)^2 + (gDelta(2) * sigma_E)^2 <span class="keyword">...</span>
+    + (gDelta(3) * sigma_W)^2 );
+beta = gtil/sigma_g;
+
+alphaP = -gDelta(1)*sigma_P / sigma_g;
+alphaE = -gDelta(2)*sigma_E / sigma_g;
+alphaW = -gDelta(3)*sigma_W / sigma_g;
+
+Xnew = [mu_P+beta*sigma_P*alphaP, mu_E+beta*sigma_E*alphaE,<span class="keyword">...</span>
+    mu_W+beta*sigma_W*alphaW];
+
+U_P = ( Xnew(1) - mu_P ) / sigma_P;
+U_E = ( Xnew(2) - mu_E ) / sigma_E;
+U_W = ( Xnew(3) - mu_W ) / sigma_W;
+betaHistory = [betaHistory; beta];
+<span class="keyword">end</span>
+betaHistory
+pf = 1 - cdf(<span class="string">'normal'</span>,beta,0,1)
+</pre><pre class="codeoutput">
+betaHistory =
+
+   9.5853e-01
+   9.3088e-01
+   9.3105e-01
+
+
+pf =
+
+   1.7591e-01
+
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Homework 4                                    Student:      Daniel Clark
+clear all                                      % Instructor: Dr. Ha-Rok Bae
+close all                                      % Class: ME 7060 Spring 2016
+clc
+format shorte, warning('off')
+%% Problem 
+% The failure event is defined as $delta_{max} > 2.0$. Answer the questions
+% below.
+
+%% Displacement Equation
+delta_max = @(P,L,E,I,w) (P.*L.^3)./ (48.*E.*I) + (5*w.*L.^4)./(385.*E.*I);
+
+%% Constants
+L = 30*12;                  % was ft now in
+I = 1.33*10^3;              % in^4
+
+%% Always Normal Variables
+mu_P = 50*10^3;             % was kip now lbs
+mu_E = 29*10^6;             % lb/in^2
+sigma_P = 10*10^3;          % was kip now lbs
+sigma_E = 2*10^6;           % lb/in^2    
+
+%% Assumed Normal Variable
+mu_W = (1/12)*1000;                % was kip/ft now lbs/in
+sigma_W = (0.1/12)*1000;           % was kip/ft now lbs/in
+%% Problem 1
+% Implement your MVFOSM matlab codes and estimate the probability of 
+% failure event. (For this question, assume w is a normal variable with a
+% mean of 1 kip/ft and a standard deviation of 0.1 kip/ft.)
+
+%% MCS
+Number_of_runs = 10^6;
+P_v = mu_P + sigma_P.*icdf('normal',rand(Number_of_runs,1),0,1);
+E_v = mu_E + sigma_E.*icdf('normal',rand(Number_of_runs,1),0,1);
+W_v = mu_W + sigma_W.*icdf('normal',rand(Number_of_runs,1),0,1);
+
+X = [P_v, E_v, W_v];
+[responseVector,~] = LSB(X);
+pf_true_MCS = sum(responseVector < 0) / Number_of_runs
+
+
+%% Solution
+X1 = [mu_P, mu_E, mu_W];
+[g, gDelta] = LSB(X1);
+gtil = g + gDelta(1) * (X1(1) - mu_P) + gDelta(2) * (X1(2) - mu_E) ...
+    + gDelta(3) * (X1(3) - mu_W);
+sigma_g = sqrt( (gDelta(1) * sigma_P)^2 + (gDelta(2) * sigma_E)^2 ...
+    + (gDelta(3) * sigma_W)^2 );
+beta = gtil/sigma_g;
+pf = 1 - cdf('normal',beta,0,1)
+
+%% Problem 2
+% Build your Hasofer Lind (HL) Method and estimate the failure 
+% probability. (For this question, assume w is a normal variable with a 
+% mean of 1 kip/ft and a standard deviation of 0.1 kip/ft.)
+
+%% Solution
+% Step A Iteration 1
+% Set the mean value point as an initial design point and set the required
+% $\beta$ convergence tolerance to $\epsilon_r = 0.001$ Compute the 
+% limit-state function value and gradients at the mean value point:
+betaHistory = [];
+X1 = [mu_P, mu_E, mu_W];
+[g, gDelta] = LSB(X1);
+gtil = g; % For the first point 
+sigma_g = sqrt( (gDelta(1) * sigma_P)^2 + (gDelta(2) * sigma_E)^2 ...
+    + (gDelta(3) * sigma_W)^2 );
+
+% Step B Compute the initial beta using the mean-value method and its 
+% direction cosine
+beta = gtil/sigma_g;
+betaHistory = [betaHistory; beta];
+
+alphaP = -gDelta(1)*sigma_P / sigma_g;
+alphaE = -gDelta(2)*sigma_E / sigma_g;
+alphaW = -gDelta(3)*sigma_W / sigma_g;
+
+% Step C Compute a new design point 2 X from Equation
+Xnew = [mu_P+beta*sigma_P*alphaP, mu_E+beta*sigma_E*alphaE,...
+    mu_W+beta*sigma_W*alphaW]
+
+U_P = ( Xnew(1) - mu_P ) / sigma_P;
+U_E = ( Xnew(2) - mu_E ) / sigma_E;
+U_W = ( Xnew(3) - mu_W ) / sigma_W;
+beta_previous = 1000; % helps with the loop
+
+while (beta_previous - beta) > 0.00000001
+% Iteration 2: Step A
+beta_previous = beta;
+[g, gDelta] = LSB(Xnew);
+
+gtil = g - (gDelta(1)*U_P*sigma_P + gDelta(2)*U_E*sigma_E  ...
+    + gDelta(3)*U_W*sigma_W);
+sigma_g = sqrt( (gDelta(1) * sigma_P)^2 + (gDelta(2) * sigma_E)^2 ...
+    + (gDelta(3) * sigma_W)^2 );
+beta = gtil/sigma_g;
+
+alphaP = -gDelta(1)*sigma_P / sigma_g;
+alphaE = -gDelta(2)*sigma_E / sigma_g;
+alphaW = -gDelta(3)*sigma_W / sigma_g;
+
+Xnew = [mu_P+beta*sigma_P*alphaP, mu_E+beta*sigma_E*alphaE,...
+    mu_W+beta*sigma_W*alphaW];
+
+U_P = ( Xnew(1) - mu_P ) / sigma_P;
+U_E = ( Xnew(2) - mu_E ) / sigma_E;
+U_W = ( Xnew(3) - mu_W ) / sigma_W;
+betaHistory = [betaHistory; beta];
+
+end
+
+betaHistory
+pf = 1 - cdf('normal',beta,0,1)
+
+%% Problem 3
+% Build a quadratic regression model of LSF with the 3-level samples within
+% the ranges of ±3? and make an estimation of the failure probability by 
+% running MCS with 1 million samples generated from the regression model. 
+% (For this question, assume w is a normal variable with a mean of 1 kip/ft
+% and a standard deviation of 0.1 kip/ft.)
+
+%% Solution
+Design = fracfact('a b c');
+Design = [Design; 0,0,0]*3;
+Design(:,1) = Design(:,1)*sigma_P; Design(:,2) = Design(:,2)*sigma_E;
+Design(:,3) = Design(:,3)*sigma_W;
+Means = [mu_P*ones(length(Design),1), mu_E*ones(length(Design),1), ...
+    mu_W*ones(length(Design),1)];
+Samples = Means + Design;
+[SampleResponse, ~] = LSB(Samples);
+Tables = fitlm(Samples,SampleResponse,'purequadratic');
+b = table2array(Tables.Coefficients(:,1));
+LSF = @(P, E, W) b(1) + b(2).*P + b(3).*E + b(4).*W + ...
+    b(5).*P.^2 + b(6).*E.^2 + b(7).*W.^2;
+
+Number_of_runs = 10^6;
+P_v = mu_P + sigma_P.*icdf('normal',rand(Number_of_runs,1),0,1);
+E_v = mu_E + sigma_E.*icdf('normal',rand(Number_of_runs,1),0,1);
+W_v = mu_W + sigma_W.*icdf('normal',rand(Number_of_runs,1),0,1);
+
+responseVector = LSF(P_v, E_v, W_v);
+pf = sum(responseVector < 0) / Number_of_runs
+
+%% Problem 4
+% Build your Hasofer Lind  Rackwitz Fiessler (HL-RF) Method and estimate
+% the failure probability. (For this question, assume w is following a 
+% lognormal distribution with a mean of 1 kip/ft and a standard deviation
+% of 0.1 kip/ft.)
+
+%% log Normal
+mu_w = 1*10^3/12;                   % was kip/ft now lbs/in
+sigma_w = 0.1*10^3/12;              % was kip/ft now lbs/in
+mu_log_w = log((mu_w^2)/sqrt(sigma_w^2+mu_w^2));
+sigma_log_w = sqrt(log((sigma_w^2/(mu_w^2))+1));
+CDF = @(w) cdf('lognormal', w, mu_log_w, sigma_log_w);
+PDF = @(w) pdf('lognormal', w, mu_log_w, sigma_log_w);
+
+%% MCS
+Number_of_runs = 10^6;
+P_v = mu_P + sigma_P.*icdf('normal',rand(Number_of_runs,1),0,1);
+E_v = mu_E + sigma_E.*icdf('normal',rand(Number_of_runs,1),0,1);
+W_v = exp(mu_log_w + sigma_log_w.*icdf('normal',rand(Number_of_runs,1),0,1));
+
+X = [P_v, E_v, W_v];
+[responseVector,~] = LSB(X);
+pf_true_MCS = sum(responseVector < 0) / Number_of_runs
+
+
+%% Solution
+betaHistory = [];
+sigma_W = pdf('norm',icdf('norm',CDF(mu_W),0,1),0,1)/PDF(mu_W);
+mu_W = mu_W-icdf('norm',CDF(mu_W),0,1)*sigma_W;
+X1 = [mu_P, mu_E, mu_W];
+
+[g, gDelta] = LSB(X1);
+gtil = g; % For the first point 
+sigma_g = sqrt( (gDelta(1) * sigma_P)^2 + (gDelta(2) * sigma_E)^2 ...
+    + (gDelta(3) * sigma_W)^2 );
+
+% Step B Compute the initial beta using the mean-value method and its 
+% direction cosine
+beta = gtil/sigma_g;
+betaHistory = [betaHistory; beta];
+
+alphaP = -gDelta(1)*sigma_P / sigma_g;
+alphaE = -gDelta(2)*sigma_E / sigma_g;
+alphaW = -gDelta(3)*sigma_W / sigma_g;
+
+% Step C Compute a new design point 2 X from Equation
+Xnew = [mu_P+beta*sigma_P*alphaP, mu_E+beta*sigma_E*alphaE,...
+    mu_W+beta*sigma_W*alphaW];
+
+U_P = ( Xnew(1) - mu_P ) / sigma_P;
+U_E = ( Xnew(2) - mu_E ) / sigma_E;
+U_W = ( Xnew(3) - mu_W ) / sigma_W;
+beta_previous = 1000; % helps with the loop
+
+while (beta_previous - beta) > 0.00000001
+% Iteration 2: Step A
+beta_previous = beta;
+sigma_W = pdf('norm',icdf('norm',CDF(mu_W),0,1),0,1)/PDF(mu_W);
+mu_W = mu_W-icdf('norm',CDF(mu_W),0,1)*sigma_W;
+
+[g, gDelta] = LSB(Xnew);
+
+gtil = g - (gDelta(1)*U_P*sigma_P + gDelta(2)*U_E*sigma_E  ...
+    + gDelta(3)*U_W*sigma_W);
+sigma_g = sqrt( (gDelta(1) * sigma_P)^2 + (gDelta(2) * sigma_E)^2 ...
+    + (gDelta(3) * sigma_W)^2 );
+beta = gtil/sigma_g;
+
+alphaP = -gDelta(1)*sigma_P / sigma_g;
+alphaE = -gDelta(2)*sigma_E / sigma_g;
+alphaW = -gDelta(3)*sigma_W / sigma_g;
+
+Xnew = [mu_P+beta*sigma_P*alphaP, mu_E+beta*sigma_E*alphaE,...
+    mu_W+beta*sigma_W*alphaW];
+
+U_P = ( Xnew(1) - mu_P ) / sigma_P;
+U_E = ( Xnew(2) - mu_E ) / sigma_E;
+U_W = ( Xnew(3) - mu_W ) / sigma_W;
+betaHistory = [betaHistory; beta];
+end
+betaHistory
+pf = 1 - cdf('normal',beta,0,1)
+##### SOURCE END #####
+--></body></html>
