@@ -1,0 +1,137 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=400.0)
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 0.0), point2=(
+    367.5, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].ObliqueDimension(textPoint=(
+    227.863220214844, -89.1628723144531), value=360.0, vertex1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[0], vertex2=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[1])
+mdb.models['Model-1'].sketches['__profile__'].undo()
+mdb.models['Model-1'].sketches['__profile__'].FixedConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[0])
+mdb.models['Model-1'].sketches['__profile__'].ObliqueDimension(textPoint=(
+    294.765075683594, -58.6307411193848), value=360.0, vertex1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[0], vertex2=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[1])
+mdb.models['Model-1'].Part(dimensionality=TWO_D_PLANAR, name='Part-1', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Part-1'].BaseWire(sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Steel')
+mdb.models['Model-1'].materials['Steel'].Elastic(table=((29000000.0, 0.29), ))
+mdb.models['Model-1'].RectangularProfile(a=11.24, b=11.24, name='beamProfile')
+mdb.models['Model-1'].BeamSection(consistentMassMatrix=False, integration=
+    DURING_ANALYSIS, material='Steel', name='beamSection', poissonRatio=0.0, 
+    profile='beamProfile', temperatureVar=LINEAR)
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=Region(
+    edges=mdb.models['Model-1'].parts['Part-1'].edges.getSequenceFromMask(
+    mask=('[#1 ]', ), )), sectionName='beamSection', thicknessAssignment=
+    FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=OFF, name='Part-1-1', 
+    part=mdb.models['Model-1'].parts['Part-1'])
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='BC-1', 
+    region=Region(
+    vertices=mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].vertices.getSequenceFromMask(
+    mask=('[#1 ]', ), )), u1=SET, u2=SET, ur3=UNSET)
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='BC-2', 
+    region=Region(
+    vertices=mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].vertices.getSequenceFromMask(
+    mask=('[#2 ]', ), )), u1=UNSET, u2=SET, ur3=UNSET)
+mdb.models['Model-1'].StaticStep(name='loadApplication', previous='Initial')
+mdb.models['Model-1'].rootAssembly.seedPartInstance(deviationFactor=0.1, 
+    minSizeFactor=0.1, regions=(
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'], ), size=36.0)
+mdb.models['Model-1'].rootAssembly.generateMesh(regions=(
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'], ))
+mdb.models['Model-1'].rootAssembly.Set(name='loadPSet', nodes=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].nodes.getSequenceFromMask(
+    mask=('[#20 ]', ), ))
+mdb.models['Model-1'].ConcentratedForce(cf2=-50000.0, createStepName=
+    'loadApplication', distributionType=UNIFORM, field='', localCsys=None, 
+    name='loadP', region=mdb.models['Model-1'].rootAssembly.sets['loadPSet'])
+mdb.models['Model-1'].Pressure(amplitude=UNSET, createStepName=
+    'loadApplication', distributionType=UNIFORM, field='', magnitude=83.33, 
+    name='distLoad', region=Region(
+    side1Edges=mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].edges.getSequenceFromMask(
+    mask=('[#1 ]', ), )))
+# Save by CEPRO on 2016_03_22-09.26.30; build 6.13-1 2013_05_15-22.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='Job-1', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, queue=None, scratch='', type=ANALYSIS, 
+    userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.models['Model-1'].parts['Part-1'].assignBeamSectionOrientation(method=
+    N1_COSINES, n1=(0.0, 0.0, -1.0), region=Region(
+    edges=mdb.models['Model-1'].parts['Part-1'].edges.getSequenceFromMask(
+    mask=('[#1 ]', ), )))
+# Save by CEPRO on 2016_03_22-09.27.32; build 6.13-1 2013_05_15-22.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly.Set(name='UserDisp', nodes=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].nodes.getSequenceFromMask(
+    mask=('[#7ff ]', ), ))
+# Save by CEPRO on 2016_03_22-09.40.13; build 6.13-1 2013_05_15-22.28.56 126354
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.ModelFromInputFile(inputFileName=
+    'C:/Users/WSUadm/Desktop/Reliability HW3/custom output/Job-1.inp', name=
+    'Job-1')
+# Save by CEPRO on 2016_03_22-15.41.24; build 6.13-1 2013_05_15-22.28.56 126354
