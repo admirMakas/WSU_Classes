@@ -1,0 +1,20 @@
+element properties
+% Beam format
+% E G rho A1 J1 Ixx1 Iyy1 
+  1 .1 1   1  1  1    1       
+1 .1 1 1 1 1 1   
+
+nodes
+% node num, x y z, Node number isn't ever stored in nodes matrix
+1 0 0 0
+2 0 1 0
+
+beam2 elements
+%node1 node2 node3 pointnum (beam properties number)
+1 2 1
+
+fix clamp
+1
+
+load
+2 1 10 

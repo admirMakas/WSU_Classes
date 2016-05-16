@@ -1,0 +1,11 @@
+Globals 
+M		Global Mass matrix
+K		Global Stiffness Matrix
+Bso		Second order form input matrix
+Bthermal	Second order form thermal input matrix.
+
+Locals
+Mr	Reduced Mass matrix
+Kr	Reduced Stiffness matrix
+T	T'MT gives Mr, T'KT gives Kr, x=T*xr
+slavedofs

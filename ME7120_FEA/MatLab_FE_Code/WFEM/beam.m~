@@ -1,0 +1,322 @@
+function kb1=beam(mode,b,c,d,e)
+
+% BEAM does as listed below. It is an Euler-Bernoulli
+% beam/rod/torsion model. The beam properties are as 
+% Ixx, Iyy, A
+% Beam properties (bprops) are in the order
+% bprops=[E G rho A1 A2 A3 J1 J2 J3 Ixx1 Ixx2 Ixx3 Iyy1 Iyy2 Iyy3]
+% For a linear interpolation they are
+% bprops=[E G rho A1 A2 J1 J2 Ixx1 Ixx2 Iyy1 Iyy2]
+% Note that the linear interpolation a user shortcut
+% and results no less computational effort.
+% Third node is in the middle.
+% Fourth node defines the beam y plane.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Variables (global):
+% -------------------
+% K       :    Global stiffness matrix
+% Ks      :    Global stiffness buckling matrix (notation from Cook/Malkus/Plesha)
+% M       :    Global mass matrix
+% nodes   :    [x y z] nodal locations
+global K
+global Ks
+global M
+global nodes
+global elprops
+
+%
+% Variables (local):
+% ------------------
+% bnodes  :    node numbers for actual beam nodes 1-2-3-4
+% k       :    stiffness matrix in local coordiates
+% kg      :    stiffness matrix rotated into global coordinates
+% m       :    mass matrix in local coordiates
+% mg      :    mass matrix rotated into global coordinates
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The design philosophy is that the central code
+% sends generic commands to element subroutines to 
+% what the element routines do, not knowing anything 
+% about the element. Element names are the same as 
+% the m-file names, with the leading characters 'el-'.
+
+% The element routines do all processing. They:
+%     a) Make the D and B matrices
+%     b) Generate the local element matrix
+%     c) Convert the local element matrix 
+%     d) Into global coordinates
+%     e) Insert the global elemental matrices into
+%             the global mass, stiffness, and other matrices
+%     f) Put drawing information into the global
+%             drawing matrices
+%     g) Obtain stresses and strains for the chosen element
+%     h) Put stress and strain drawing information into
+%             global drawing matrices
+% Exactly how to do this is illustrated in this and other
+% element M-files. 
+%
+% This philosophy is a little unusual, but it allows the
+% introduction of new elements without editing any existing 
+% WFEM code. This prevents introduction of bugs by accident, 
+% and makes the code easier to use in a classroom environment
+% where students need to learn FEM coding without getting 
+% lost in the details of reading files, writing files, graphics...
+% Of course, the full source code can always be viewed and 
+% modified. If you have any improvements that you think I should 
+% include in future release, please send them on.
+% Copyright Joseph C. Slater, 7/26/2002.
+% joseph.slater@wright.edu
+
+if strcmp(mode,'make')
+   bnodes=b;
+   bprops=c;
+  else
+   elnum=b;
+end
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beam properties (bprops) are in the order
+% bprops=[E G rho A1 A2 A3 J1 J2 J3 Ixx1 Ixx2 Ixx3 Iyy1 Iyy2 Iyy3]
+% For a linear beam they are
+% bprops=[E G rho A1 A2 J1 J2 Ixx1 Ixx2 Iyy1 Iyy2]
+if strcmp(mode,'make')
+  E=bprops(1);
+  G=bprops(2);
+  rho=bprops(3);
+  if length(bprops)==14
+    A1=bprops(4);
+    A2=bprops(5);
+    A3=bprops(6);
+    J1=bprops(7);
+    J2=bprops(8);
+    J3=bprops(9);
+    Ixx1=bprops(10);
+    Ixx2=bprops(12);
+    Ixx3=bprops(13);
+    Iyy1=bprops(14);
+    Iyy2=bprops(15);
+    Iyy3=bprops(16);
+  elseif length(bprops)=10
+    A1=bprops(4);
+    A2=bprops(5);
+    A3=(A1+A2)/2;
+    J1=bprops(6);
+    J2=bprops(7);
+    J3=(J1+J2)/2;
+    Ixx1=bprops(8);
+    Ixx2=bprops(9);
+    Ixx3=(Ixx1+Ixx2)/2;
+    Iyy1=bprops(10);
+    Iyy2=bprops(11);  
+    Iyy3=(Iyy1+Iyy2)/2;
+  end
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Define beam node locations for easy later referencing
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+bnodes  
+  x1=nodes(bnodes(1),1);
+  y1=nodes(bnodes(1),2);
+  z1=nodes(bnodes(1),3);
+  x2=nodes(bnodes(2),1);
+  y2=nodes(bnodes(2),2);
+  z2=nodes(bnodes(2),3);
+  x3=nodes(bnodes(3),1);
+  y3=nodes(bnodes(3),2);
+  z3=nodes(bnodes(3),3);
+  x4=nodes(bnodes(4),1);
+  y4=nodes(bnodes(4),2);
+  z4=nodes(bnodes(4),3);
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Shape functions for higher order beam. 
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Shape functions in matrix polynomial form (polyval style) for bending
+  bn1 =  [  0.750  -0.500  -1.250   1.000   0.000   0.000];
+  bn1d =  [3.75000  -2.00000  -3.75000   2.00000   0.00000];
+  bn1dd =  [   15.00   -6.00   -7.50    2.00];
+  bn2 =  [ 0.250  -0.250  -0.250   0.250   0.000   0.000];
+  bn2d =  [1.25000  -1.00000  -0.75000   0.50000   0.00000];
+  bn2dd =  [   5.000  -3.000  -1.500   0.500];
+  bn3 =  [-0.750  -0.500   1.250   1.000   0.000   0.000];
+  bn3d = [-3.75000  -2.00000   3.75000   2.00000   0.00000];
+  bn3dd =[  -15.00   -6.00    7.50    2.00];
+  bn4 =  [ 0.250   0.250  -0.250  -0.250   0.000   0.000];
+  bn4d = [ 1.25000   1.00000  -0.75000  -0.50000   0.00000];
+  bn4dd =[   5.000   3.000  -1.500  -0.500];
+  bn5 =  [ 0.000   1.000  -0.000  -2.000   0.000   1.000];
+  bn5d = [0.00000   4.00000  -0.00000  -4.00000   0.00000];
+  bn5dd =[   0    1.20e+01   0   -4.00e+00];
+  bn6 =  [ 1.000   0.000  -2.000  -0.000   1.000   0.000];
+  bn6d = [ 5.0000    0.0   -6.0000   0.0    1.0000];
+  bn6dd =[    20.0    0   -12.0  0];
+  
+  % Shape functions in matrix polynomial form (polyval style) for 
+  % torsion/rod
+  rn1=[0.5 -.5 0];
+  rn1d=[1 -0.5];
+  rn2=[.5 .5 0];
+  rn2d=[1 0.5];
+  rn3=[-1 0 1];
+  rn3d=[-2 0];
+  numbeamgauss=5; % Number of Gauss points for integration of beam element
+  [bgpts,bgpw]=gauss(numbeamgauss);
+  kb1=zeros(6,6);
+  kb2=kb1;
+  l=norm([x2 y2 z2]-[x1 y2 z1]);
+  Jac=l/2;% Beam Jacobian. valid only if node three is in the
+          % middle of the beam
+  % Local Bending in x-y plane
+  for i=1:numbeamgauss
+    beamsfs=[polyval(bn1dd,bgpts(i))/Jac^2;
+	     polyval(bn2dd,bgpts(i))/Jac;
+	     polyval(bn3dd,bgpts(i))/Jac^2;
+	     polyval(bn4dd,bgpts(i))/Jac;
+	     polyval(bn5dd,bgpts(i))/Jac^2;
+	     polyval(bn6dd,bgpts(i))/Jac];
+    Ixx=polyval(rn1*Ixx1+rn2*Ixx2+rn3*Ixx3,bgpts(i));
+    kb1=kb1+bgpw(i)*beamsfs*beamsfs'*Ixx*E*Jac;
+  end
+  % Local Bending in x-z plane
+  for i=1:numbeamgauss
+    beamsfs=[polyval(bn1dd,bgpts(i))/Jac^2;
+	     -polyval(bn2dd,bgpts(i))/Jac;
+	     polyval(bn3dd,bgpts(i))/Jac^2;
+	     -polyval(bn4dd,bgpts(i))/Jac;
+	     polyval(bn5dd,bgpts(i))/Jac^2;
+	     -polyval(bn6dd,bgpts(i))/Jac];
+    Iyy=polyval(rn1*Iyy1+rn2*Iyy2+rn3*Iyy3,bgpts(i));
+    kb2=kb2+bgpw(i)*beamsfs*beamsfs'*Iyy*E*Jac;
+  end
+  % Local Extension in x, torsion about x
+  numrodgauss=3;
+  [rgpts,rgpw]=gauss(numrodgauss);
+  krod=zeros(3,3);
+  ktor=zeros(3,3);
+  for i=1:numrodgauss
+    rodsfs=[polyval(rn1d,rgpts(i))/Jac;
+	    polyval(rn2d,rgpts(i))/Jac;
+	    polyval(rn2d,rgpts(i))/Jac];
+    J=polyval(rn1*J1+rn2*J2+rn3*J3,bgpts(i));
+    A=polyval(rn1*A1+rn2*A2+rn3*A3,bgpts(i));
+    krod=krod+rgpw(i)*rodsfs*rodsfs'*A*E*Jac;
+    ktor=ktor+rgpw(i)*rodsfs*rodsfs'*J*G*Jac;
+  end
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % 
+  % Derivation of Mass matrices
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  [bgpts,bgpw]=gauss(numbeamgauss+2);
+  mb1=zeros(6,6);
+  % Local Bending in x-y plane
+  for i=1:numbeamgauss
+    beamsfs=[polyval(bn1,bgpts(i))/Jac^2;
+	     polyval(bn2,bgpts(i))/Jac;
+	     polyval(bn3,bgpts(i))/Jac^2;
+	     polyval(bn4,bgpts(i))/Jac;
+	     polyval(bn5,bgpts(i))/Jac^2;
+	     polyval(bn6,bgpts(i))/Jac];
+    A=polyval(rn1*A1+rn2*A2+rn3*A3,bgpts(i));
+    mb1=mb1+bgpw(i)*beamsfs*beamsfs'*rho*A*Jac;
+  end
+  % Local Bending in x-z plane
+  mb2=zeros(6,6);
+  for i=1:numbeamgauss
+    beamsfs=[polyval(bn1,bgpts(i))/Jac^2;
+	     -polyval(bn2,bgpts(i))/Jac;
+	     polyval(bn3,bgpts(i))/Jac^2;
+	     -polyval(bn4,bgpts(i))/Jac;
+	     polyval(bn5,bgpts(i))/Jac^2;
+	     -polyval(bn6,bgpts(i))/Jac];
+    A=polyval(rn1*A1+rn2*A2+rn3*A3,bgpts(i));
+    mb2=mb2+bgpw(i)*beamsfs*beamsfs'*rho*A*Jac;
+  end
+  % Local Extension in x, torsion about x
+  [rgpts,rgpw]=gauss(numrodgauss+1);
+  mrod=zeros(3,3);
+  mtor=zeros(3,3);
+  for i=1:numrodgauss
+    rodsfs=[polyval(rn1,rgpts(i))/Jac;
+	    polyval(rn2,rgpts(i))/Jac;
+	    polyval(rn2,rgpts(i))/Jac];
+    J=polyval(rn1*J1+rn2*J2+rn3*J3,bgpts(i));
+    A=polyval(rn1*A1+rn2*A2+rn3*A3,bgpts(i));
+    mrod=mrod+rgpw(i)*rodsfs*rodsfs'*A*rho*Jac;
+    mtor=mtor+rgpw(i)*rodsfs*rodsfs'*J*rho*Jac;
+  end
+  % Compounding each stiffness matrix into the complete elemental 
+  % stiffness matrix
+  k=zeros(18,18);
+  k([2 6 8 12 14 18],[2 6 8 12 14 18])=kb1;
+  k([3 5 9 11 15 17],[3 5 9 11 15 17])=kb2;
+  k([1 7 13],[1 7 13])=krod;
+  k([4 10 16],[4 10 16])=ktor;
+  % Compounding each mass matrix into the complete elemental 
+  % mass matrix
+  m=zeros(18,18);
+  m([2 6 8 12 14 18],[2 6 8 12 14 18])=mb1;
+  m([3 5 9 11 15 17],[3 5 9 11 15 17])=mb2;
+  m([1 7 13],[1 7 13])=mrod;
+  m([4 10 16],[4 10 16])=mtor;
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Coordinate rotations
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % bnodes is the number of the nodes for the element
+%   x1=nodes(1,bnodes(1));
+%   y1=nodes(2,bnodes(1));
+%   z1=nodes(3,bnodes(1));
+%   x2=nodes(1,bnodes(2));
+%   y2=nodes(2,bnodes(2));
+%   z2=nodes(3,bnodes(2));
+%   x3=nodes(1,bnodes(3));
+%   y3=nodes(2,bnodes(3));
+%   z3=nodes(3,bnodes(3));
+%   x4=nodes(1,bnodes(4));
+%   y4=nodes(2,bnodes(4));
+%   z4=nodes(3,bnodes(4));
+  R1=([x2 y2 y2]-[x1 y1 z1]);
+  lam1=R1/norm(R1);
+  R2=([x4 y4 y4]-[x1 y1 z1]);
+  R2perp=R2-dot(R2,lam1)*lam1;
+  lam2=R2perp/norm(R2perp);
+  lam3=cross(lam1,lam2);
+  lamloc=[lam1;lam2;lam3];
+  z=zeros(3,3);
+  lam=[lamloc z z z z z;
+       z lamloc z z z z;
+       z z lamloc z z z;
+       z z z lamloc z z;
+       z z z z lamloc z;
+       z z z z z lamloc];
+  kg=lam'*k*lam;
+  mg=lam'*m*lam;
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % Assembling matrices into global matrices
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  bn1=bnodes(1);bn2=bnodes(2);bn3=bnodes(3);
+  indices=[bn1*6+(-5:0) bn2*6+(-5:0) bn3*6+(-5:0)] ;
+
+  K(indices,indices)=K(indices,indices)+kg;
+  M(indices,indices)=M(indices,indices)+mg;
+
+
+elseif strcmp(mode,'draw')
+elseif strcmp(mode,'buckle')
+end
