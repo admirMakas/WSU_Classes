@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.7.16)  19 MAR 2016 19:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.7.16)  21 JUN 2016 14:24
 entering extended mode
 **Admirs_Lab_Report.tex
 (Admirs_Lab_Report.tex
@@ -1029,28 +1029,50 @@ LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <12> not available
  [5 <./base_wo_weight_timeData.jpg (PNG copy)> <./LOC4_wo_weight_timeData.jpg (
 PNG copy)> <./base_wo_weight_input.jpg (PNG copy)> <./LOC4_wo_weight_input.jpg 
 (PNG copy)>]
-<baseR_wtWeight_CSD.jpg, id=30, 421.575pt x 316.18124pt>
-File: baseR_wtWeight_CSD.jpg Graphic file (type jpg)
 
-<use baseR_wtWeight_CSD.jpg>
-Package pdftex.def Info: baseR_wtWeight_CSD.jpg used on input line 276.
-(pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
+LaTeX Warning: File `baseR_wtWeight_CSD.jpg' not found on input line 276.
 
-<baseR_woWeight_CSD.jpg, id=31, 421.575pt x 316.18124pt>
-File: baseR_woWeight_CSD.jpg Graphic file (type jpg)
 
-<use baseR_woWeight_CSD.jpg>
-Package pdftex.def Info: baseR_woWeight_CSD.jpg used on input line 282.
-(pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
+! Package pdftex.def Error: File `baseR_wtWeight_CSD.jpg' not found.
 
-<baseC_wtWeight_CSD.jpg, id=32, 421.575pt x 316.18124pt>
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.276 		}
+         
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 276.
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1pcr.fd"
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+
+LaTeX Warning: File `baseR_woWeight_CSD.jpg' not found on input line 282.
+
+
+! Package pdftex.def Error: File `baseR_woWeight_CSD.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.282 		}
+         
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+<baseC_wtWeight_CSD.jpg, id=30, 421.575pt x 316.18124pt>
 File: baseC_wtWeight_CSD.jpg Graphic file (type jpg)
 
 <use baseC_wtWeight_CSD.jpg>
 Package pdftex.def Info: baseC_wtWeight_CSD.jpg used on input line 288.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<baseC_woWeight_CSD.jpg, id=33, 421.575pt x 316.18124pt>
+<baseC_woWeight_CSD.jpg, id=31, 421.575pt x 316.18124pt>
 File: baseC_woWeight_CSD.jpg Graphic file (type jpg)
 
 <use baseC_woWeight_CSD.jpg>
@@ -1061,28 +1083,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 294--294
 []\T1/futs/m/n/10 (d) CSD for base ex-ci-ta-tion us-ing cor-rected
  []
 
-<baseR_wtWeight_H1_H2_2.jpg, id=34, 420.06938pt x 315.7058pt>
-File: baseR_wtWeight_H1_H2_2.jpg Graphic file (type jpg)
 
-<use baseR_wtWeight_H1_H2_2.jpg>
-Package pdftex.def Info: baseR_wtWeight_H1_H2_2.jpg used on input line 310.
-(pdftex.def)             Requested size: 177.93422pt x 133.72786pt.
+LaTeX Warning: File `baseR_wtWeight_H1_H2_2.jpg' not found on input line 310.
 
-<baseR_woWeight_H1_H2.jpg, id=35, 421.575pt x 316.18124pt>
-File: baseR_woWeight_H1_H2.jpg Graphic file (type jpg)
 
-<use baseR_woWeight_H1_H2.jpg>
-Package pdftex.def Info: baseR_woWeight_H1_H2.jpg used on input line 316.
-(pdftex.def)             Requested size: 178.30823pt x 133.72786pt.
+! Package pdftex.def Error: File `baseR_wtWeight_H1_H2_2.jpg' not found.
 
-<baseC_wtWeight_H1_H2.jpg, id=36, 523.20468pt x 342.5297pt>
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.310 		}
+         
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `baseR_woWeight_H1_H2.jpg' not found on input line 316.
+
+
+! Package pdftex.def Error: File `baseR_woWeight_H1_H2.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.316 		}
+         
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+<baseC_wtWeight_H1_H2.jpg, id=32, 523.20468pt x 342.5297pt>
 File: baseC_wtWeight_H1_H2.jpg Graphic file (type jpg)
 
 <use baseC_wtWeight_H1_H2.jpg>
 Package pdftex.def Info: baseC_wtWeight_H1_H2.jpg used on input line 322.
 (pdftex.def)             Requested size: 195.57855pt x 128.0374pt.
 
-<baseC_woWeight_H1_H2.jpg, id=37, 421.575pt x 316.18124pt>
+<baseC_woWeight_H1_H2.jpg, id=33, 421.575pt x 316.18124pt>
 File: baseC_woWeight_H1_H2.jpg Graphic file (type jpg)
 
 <use baseC_woWeight_H1_H2.jpg>
@@ -1093,68 +1133,100 @@ Underfull \hbox (badness 10000) in paragraph at lines 299--331
 
  []
 
-[6 <./baseR_wtWeight_CSD.jpg> <./baseR_woWeight_CSD.jpg> <./baseC_wtWeight_CSD.
-jpg> <./baseC_woWeight_CSD.jpg>]
-<baseR_wtWeight_coherance.jpg, id=42, 421.575pt x 316.18124pt>
-File: baseR_wtWeight_coherance.jpg Graphic file (type jpg)
+[6 <./baseC_wtWeight_CSD.jpg> <./baseC_woWeight_CSD.jpg>]
 
-<use baseR_wtWeight_coherance.jpg>
-Package pdftex.def Info: baseR_wtWeight_coherance.jpg used on input line 344.
-(pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
+LaTeX Warning: File `baseR_wtWeight_coherance.jpg' not found on input line 344.
 
-<baseR_woWeight_coherance.jpg, id=43, 421.575pt x 316.18124pt>
-File: baseR_woWeight_coherance.jpg Graphic file (type jpg)
 
-<use baseR_woWeight_coherance.jpg>
-Package pdftex.def Info: baseR_woWeight_coherance.jpg used on input line 350.
-(pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
+
+! Package pdftex.def Error: File `baseR_wtWeight_coherance.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.344 		}
+         
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `baseR_woWeight_coherance.jpg' not found on input line 350.
+
+
+
+! Package pdftex.def Error: File `baseR_woWeight_coherance.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.350 		}
+         
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 333--353
 
  []
 
-<baseC_wtWeight_coherance.jpg, id=44, 421.575pt x 316.18124pt>
+<baseC_wtWeight_coherance.jpg, id=39, 421.575pt x 316.18124pt>
 File: baseC_wtWeight_coherance.jpg Graphic file (type jpg)
 
 <use baseC_wtWeight_coherance.jpg>
 Package pdftex.def Info: baseC_wtWeight_coherance.jpg used on input line 360.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<baseC_woWeight_coherance.jpg, id=45, 421.575pt x 316.18124pt>
+<baseC_woWeight_coherance.jpg, id=40, 421.575pt x 316.18124pt>
 File: baseC_woWeight_coherance.jpg Graphic file (type jpg)
 
 <use baseC_woWeight_coherance.jpg>
 Package pdftex.def Info: baseC_woWeight_coherance.jpg used on input line 366.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
- [7 <./baseR_wtWeight_H1_H2_2.jpg> <./baseR_woWeight_H1_H2.jpg> <./baseC_wtWeig
-ht_H1_H2.jpg> <./baseC_woWeight_H1_H2.jpg> <./baseR_wtWeight_coherance.jpg> <./
-baseR_woWeight_coherance.jpg>]
-<LOC4R_wtWeight_CSD.jpg, id=50, 421.575pt x 316.18124pt>
-File: LOC4R_wtWeight_CSD.jpg Graphic file (type jpg)
+ [7 <./baseC_wtWeight_H1_H2.jpg> <./baseC_woWeight_H1_H2.jpg>]
 
-<use LOC4R_wtWeight_CSD.jpg>
-Package pdftex.def Info: LOC4R_wtWeight_CSD.jpg used on input line 383.
-(pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
+LaTeX Warning: File `LOC4R_wtWeight_CSD.jpg' not found on input line 383.
 
-<LOC4R_woWeight_CSD.jpg, id=51, 421.575pt x 316.18124pt>
-File: LOC4R_woWeight_CSD.jpg Graphic file (type jpg)
 
-<use LOC4R_woWeight_CSD.jpg>
-Package pdftex.def Info: LOC4R_woWeight_CSD.jpg used on input line 389.
-(pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
+! Package pdftex.def Error: File `LOC4R_wtWeight_CSD.jpg' not found.
 
-Underfull \hbox (badness 7133) in paragraph at lines 389--389
-[]\T1/futs/m/n/10 (b) CSD for LOC4 ex-ci-ta-tion us-ing raw data
- []
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.383 		}
+         
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<LOC4C_wtWeight_CSD.jpg, id=52, 421.575pt x 316.18124pt>
+
+LaTeX Warning: File `LOC4R_woWeight_CSD.jpg' not found on input line 389.
+
+
+! Package pdftex.def Error: File `LOC4R_woWeight_CSD.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.389 		}
+         
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+<LOC4C_wtWeight_CSD.jpg, id=45, 421.575pt x 316.18124pt>
 File: LOC4C_wtWeight_CSD.jpg Graphic file (type jpg)
 
 <use LOC4C_wtWeight_CSD.jpg>
 Package pdftex.def Info: LOC4C_wtWeight_CSD.jpg used on input line 395.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<LOC4C_woWeight_CSD.jpg, id=53, 421.575pt x 316.18124pt>
+<LOC4C_woWeight_CSD.jpg, id=46, 421.575pt x 316.18124pt>
 File: LOC4C_woWeight_CSD.jpg Graphic file (type jpg)
 
 <use LOC4C_woWeight_CSD.jpg>
@@ -1170,28 +1242,55 @@ Underfull \hbox (badness 10000) in paragraph at lines 371--404
 
  []
 
-<LOC4R_wtWeight_H1_H2.jpg, id=54, 421.575pt x 316.18124pt>
-File: LOC4R_wtWeight_H1_H2.jpg Graphic file (type jpg)
 
-<use LOC4R_wtWeight_H1_H2.jpg>
-Package pdftex.def Info: LOC4R_wtWeight_H1_H2.jpg used on input line 417.
-(pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
+LaTeX Warning: File `LOC4R_wtWeight_H1_H2.jpg' not found on input line 417.
 
-<LOC4R_woWeight_H1_H2.jpg, id=55, 421.575pt x 316.18124pt>
-File: LOC4R_woWeight_H1_H2.jpg Graphic file (type jpg)
 
-<use LOC4R_woWeight_H1_H2.jpg>
-Package pdftex.def Info: LOC4R_woWeight_H1_H2.jpg used on input line 423.
-(pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
+! Package pdftex.def Error: File `LOC4R_wtWeight_H1_H2.jpg' not found.
 
-<LOC4C_wtWeight_H1_H2.jpg, id=56, 421.575pt x 316.18124pt>
-File: LOC4C_wtWeight_H1_H2.jpg Graphic file (type jpg)
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.417 		}
+         
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<use LOC4C_wtWeight_H1_H2.jpg>
-Package pdftex.def Info: LOC4C_wtWeight_H1_H2.jpg used on input line 429.
-(pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<LOC4C_woWeight_H1_H2.jpg, id=57, 421.575pt x 316.18124pt>
+LaTeX Warning: File `LOC4R_woWeight_H1_H2.jpg' not found on input line 423.
+
+
+! Package pdftex.def Error: File `LOC4R_woWeight_H1_H2.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.423 		}
+         
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `LOC4C_wtWeight_H1_H2.jpg' not found on input line 429.
+
+
+! Package pdftex.def Error: File `LOC4C_wtWeight_H1_H2.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.429 		}
+         
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+<LOC4C_woWeight_H1_H2.jpg, id=47, 421.575pt x 316.18124pt>
 File: LOC4C_woWeight_H1_H2.jpg Graphic file (type jpg)
 
 <use LOC4C_woWeight_H1_H2.jpg>
@@ -1202,31 +1301,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 406--438
 
  []
 
-[8 <./baseC_wtWeight_coherance.jpg> <./baseC_woWeight_coherance.jpg> <./LOC4R_w
-tWeight_CSD.jpg> <./LOC4R_woWeight_CSD.jpg> <./LOC4C_wtWeight_CSD.jpg> <./LOC4C
-_woWeight_CSD.jpg>]
-<LOC4R_wtWeight_coherance.jpg, id=61, 421.575pt x 316.18124pt>
+[8 <./baseC_wtWeight_coherance.jpg> <./baseC_woWeight_coherance.jpg> <./LOC4C_w
+tWeight_CSD.jpg> <./LOC4C_woWeight_CSD.jpg>]
+<LOC4R_wtWeight_coherance.jpg, id=51, 421.575pt x 316.18124pt>
 File: LOC4R_wtWeight_coherance.jpg Graphic file (type jpg)
 
 <use LOC4R_wtWeight_coherance.jpg>
 Package pdftex.def Info: LOC4R_wtWeight_coherance.jpg used on input line 452.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<LOC4R_woWeight_coherance.jpg, id=62, 421.575pt x 316.18124pt>
+<LOC4R_woWeight_coherance.jpg, id=52, 421.575pt x 316.18124pt>
 File: LOC4R_woWeight_coherance.jpg Graphic file (type jpg)
 
 <use LOC4R_woWeight_coherance.jpg>
 Package pdftex.def Info: LOC4R_woWeight_coherance.jpg used on input line 458.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<LOC4C_wtWeight_coherance.jpg, id=63, 421.575pt x 316.18124pt>
+<LOC4C_wtWeight_coherance.jpg, id=53, 421.575pt x 316.18124pt>
 File: LOC4C_wtWeight_coherance.jpg Graphic file (type jpg)
 
 <use LOC4C_wtWeight_coherance.jpg>
 Package pdftex.def Info: LOC4C_wtWeight_coherance.jpg used on input line 468.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<LOC4C_woWeight_coherance.jpg, id=64, 421.575pt x 316.18124pt>
+<LOC4C_woWeight_coherance.jpg, id=54, 421.575pt x 316.18124pt>
 File: LOC4C_woWeight_coherance.jpg Graphic file (type jpg)
 
 <use LOC4C_woWeight_coherance.jpg>
@@ -1237,8 +1335,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 440--477
 
  []
 
-[9 <./LOC4R_wtWeight_H1_H2.jpg> <./LOC4R_woWeight_H1_H2.jpg> <./LOC4C_wtWeight_
-H1_H2.jpg> <./LOC4C_woWeight_H1_H2.jpg>]
+[9 <./LOC4C_woWeight_H1_H2.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 484--507
 
  []
@@ -1265,84 +1362,84 @@ Underfull \hbox (badness 10000) in paragraph at lines 484--507
 
 [10 <./LOC4R_wtWeight_coherance.jpg> <./LOC4R_woWeight_coherance.jpg> <./LOC4C_
 wtWeight_coherance.jpg> <./LOC4C_woWeight_coherance.jpg>]
-<baseR_wtWeight_ASDinput.jpg, id=71, 421.575pt x 316.18124pt>
+<baseR_wtWeight_ASDinput.jpg, id=61, 421.575pt x 316.18124pt>
 File: baseR_wtWeight_ASDinput.jpg Graphic file (type jpg)
 
 <use baseR_wtWeight_ASDinput.jpg>
 Package pdftex.def Info: baseR_wtWeight_ASDinput.jpg used on input line 515.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<baseR_woWeight_ASDinput.jpg, id=72, 421.575pt x 316.18124pt>
+<baseR_woWeight_ASDinput.jpg, id=62, 421.575pt x 316.18124pt>
 File: baseR_woWeight_ASDinput.jpg Graphic file (type jpg)
 
 <use baseR_woWeight_ASDinput.jpg>
 Package pdftex.def Info: baseR_woWeight_ASDinput.jpg used on input line 521.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<baseC_wtWeight_ASDinput.jpg, id=73, 421.575pt x 316.18124pt>
+<baseC_wtWeight_ASDinput.jpg, id=63, 421.575pt x 316.18124pt>
 File: baseC_wtWeight_ASDinput.jpg Graphic file (type jpg)
 
 <use baseC_wtWeight_ASDinput.jpg>
 Package pdftex.def Info: baseC_wtWeight_ASDinput.jpg used on input line 527.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<baseC_woWeight_ASDinput.jpg, id=74, 421.575pt x 316.18124pt>
+<baseC_woWeight_ASDinput.jpg, id=64, 421.575pt x 316.18124pt>
 File: baseC_woWeight_ASDinput.jpg Graphic file (type jpg)
 
 <use baseC_woWeight_ASDinput.jpg>
 Package pdftex.def Info: baseC_woWeight_ASDinput.jpg used on input line 533.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<baseR_wtWeight_ASDoutput.jpg, id=75, 421.575pt x 314.67563pt>
+<baseR_wtWeight_ASDoutput.jpg, id=65, 421.575pt x 314.67563pt>
 File: baseR_wtWeight_ASDoutput.jpg Graphic file (type jpg)
 
 <use baseR_wtWeight_ASDoutput.jpg>
 Package pdftex.def Info: baseR_wtWeight_ASDoutput.jpg used on input line 544.
 (pdftex.def)             Requested size: 209.64838pt x 156.49014pt.
 
-<baseR_woWeight_ASDoutput.jpg, id=76, 421.575pt x 316.18124pt>
+<baseR_woWeight_ASDoutput.jpg, id=66, 421.575pt x 316.18124pt>
 File: baseR_woWeight_ASDoutput.jpg Graphic file (type jpg)
 
 <use baseR_woWeight_ASDoutput.jpg>
 Package pdftex.def Info: baseR_woWeight_ASDoutput.jpg used on input line 550.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<baseC_wtWeight_ASDoutput.jpg, id=77, 421.575pt x 316.18124pt>
+<baseC_wtWeight_ASDoutput.jpg, id=67, 421.575pt x 316.18124pt>
 File: baseC_wtWeight_ASDoutput.jpg Graphic file (type jpg)
 
 <use baseC_wtWeight_ASDoutput.jpg>
 Package pdftex.def Info: baseC_wtWeight_ASDoutput.jpg used on input line 556.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<baseC_woWeight_ASDoutput.jpg, id=78, 421.575pt x 316.18124pt>
+<baseC_woWeight_ASDoutput.jpg, id=68, 421.575pt x 316.18124pt>
 File: baseC_woWeight_ASDoutput.jpg Graphic file (type jpg)
 
 <use baseC_woWeight_ASDoutput.jpg>
 Package pdftex.def Info: baseC_woWeight_ASDoutput.jpg used on input line 562.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
  [11]
-<LOC4R_wtWeight_ASDinput.jpg, id=82, 421.575pt x 316.18124pt>
+<LOC4R_wtWeight_ASDinput.jpg, id=72, 421.575pt x 316.18124pt>
 File: LOC4R_wtWeight_ASDinput.jpg Graphic file (type jpg)
 
 <use LOC4R_wtWeight_ASDinput.jpg>
 Package pdftex.def Info: LOC4R_wtWeight_ASDinput.jpg used on input line 573.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<LOC4R_woWeight_ASDinput.jpg, id=83, 421.575pt x 316.18124pt>
+<LOC4R_woWeight_ASDinput.jpg, id=73, 421.575pt x 316.18124pt>
 File: LOC4R_woWeight_ASDinput.jpg Graphic file (type jpg)
 
 <use LOC4R_woWeight_ASDinput.jpg>
 Package pdftex.def Info: LOC4R_woWeight_ASDinput.jpg used on input line 579.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<LOC4C_wtWeight_ASDinput.jpg, id=84, 421.575pt x 316.18124pt>
+<LOC4C_wtWeight_ASDinput.jpg, id=74, 421.575pt x 316.18124pt>
 File: LOC4C_wtWeight_ASDinput.jpg Graphic file (type jpg)
 
 <use LOC4C_wtWeight_ASDinput.jpg>
 Package pdftex.def Info: LOC4C_wtWeight_ASDinput.jpg used on input line 585.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<LOC4C_woWeight_ASDinput.jpg, id=85, 421.575pt x 316.18124pt>
+<LOC4C_woWeight_ASDinput.jpg, id=75, 421.575pt x 316.18124pt>
 File: LOC4C_woWeight_ASDinput.jpg Graphic file (type jpg)
 
 <use LOC4C_woWeight_ASDinput.jpg>
@@ -1350,28 +1447,28 @@ Package pdftex.def Info: LOC4C_woWeight_ASDinput.jpg used on input line 591.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
  [12 <./baseR_wtWeight_ASDinput.jpg> <./baseR_woWeight_ASDinput.jpg> <./baseC_w
 tWeight_ASDinput.jpg> <./baseC_woWeight_ASDinput.jpg>] <LOC4R_wtWeight_ASDoutpu
-t.jpg, id=89, 421.575pt x 316.18124pt>
+t.jpg, id=79, 421.575pt x 316.18124pt>
 File: LOC4R_wtWeight_ASDoutput.jpg Graphic file (type jpg)
 
 <use LOC4R_wtWeight_ASDoutput.jpg>
 Package pdftex.def Info: LOC4R_wtWeight_ASDoutput.jpg used on input line 602.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<LOC4R_woWeight_ASDoutput.jpg, id=90, 421.575pt x 316.18124pt>
+<LOC4R_woWeight_ASDoutput.jpg, id=80, 421.575pt x 316.18124pt>
 File: LOC4R_woWeight_ASDoutput.jpg Graphic file (type jpg)
 
 <use LOC4R_woWeight_ASDoutput.jpg>
 Package pdftex.def Info: LOC4R_woWeight_ASDoutput.jpg used on input line 608.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<LOC4C_wtWeight_ASDoutput.jpg, id=91, 421.575pt x 316.18124pt>
+<LOC4C_wtWeight_ASDoutput.jpg, id=81, 421.575pt x 316.18124pt>
 File: LOC4C_wtWeight_ASDoutput.jpg Graphic file (type jpg)
 
 <use LOC4C_wtWeight_ASDoutput.jpg>
 Package pdftex.def Info: LOC4C_wtWeight_ASDoutput.jpg used on input line 614.
 (pdftex.def)             Requested size: 208.65775pt x 156.49014pt.
 
-<LOC4C_woWeight_ASDoutput.jpg, id=92, 421.575pt x 316.18124pt>
+<LOC4C_woWeight_ASDoutput.jpg, id=82, 421.575pt x 316.18124pt>
 File: LOC4C_woWeight_ASDoutput.jpg Graphic file (type jpg)
 
 <use LOC4C_woWeight_ASDoutput.jpg>
@@ -1390,19 +1487,20 @@ _ASDinput.jpg> <./LOC4R_woWeight_ASDinput.jpg> <./LOC4C_wtWeight_ASDinput.jpg>
 woWeight_ASDoutput.jpg> <./LOC4C_wtWeight_ASDoutput.jpg> <./LOC4C_woWeight_ASDo
 utput.jpg>] (Admirs_Lab_Report.aux) ) 
 Here is how much of TeX's memory you used:
- 14622 strings out of 493675
- 265540 string characters out of 3143992
+ 14612 strings out of 493675
+ 264693 string characters out of 3143992
  368670 words of memory out of 3000000
- 17694 multiletter control sequences out of 15000+200000
- 72821 words of font info for 79 fonts, out of 3000000 for 9000
+ 17679 multiletter control sequences out of 15000+200000
+ 73442 words of font info for 81 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 54i,11n,54p,10428b,272s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 54i,11n,54p,10428b,318s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvi
 ps/fontname/8r.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putb8a
-.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putr8a.pfb>
-Output written on Admirs_Lab_Report.pdf (15 pages, 10912337 bytes).
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putr8a.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on Admirs_Lab_Report.pdf (15 pages, 10313441 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
+ 105 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 261 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 206 words of extra memory for PDF output out of 10000 (max. 10000000)
 
