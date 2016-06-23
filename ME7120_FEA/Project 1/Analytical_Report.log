@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.7.16)  21 JUN 2016 16:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.7.16)  22 JUN 2016 14:09
 entering extended mode
 **Analytical_Report.tex
 (Analytical_Report.tex
@@ -738,75 +738,51 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \@lastruleclass=\count157
 \@thisrulewidth=\dimen203
 )
-(Analytical_Report.aux
-
-LaTeX Warning: Label `fig:F_1' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:F_1' multiply defined.
-
-
-LaTeX Warning: Label `fig:F_2' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:F_2' multiply defined.
-
-
-LaTeX Warning: Label `fig:F_3' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:F_3' multiply defined.
+(Analytical_Report.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 56.
+LaTeX Font Info:    Try loading font information for FML+futm on input line 56.
 
 
-LaTeX Warning: Label `fig:F_4' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:F_4' multiply defined.
-
-)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 55.
-LaTeX Font Info:    Try loading font information for FML+futm on input line 55.
-
- ("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\fmlfutm.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\fmlfutm.fd"
 File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
 )
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 55.
-LaTeX Font Info:    Try loading font information for FMS+futm on input line 55.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 56.
+LaTeX Font Info:    Try loading font information for FMS+futm on input line 56.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\fmsfutm.fd"
 File: fmsfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FMS/futm.
 )
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 55.
-LaTeX Font Info:    Try loading font information for FMX+futm on input line 55.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 56.
+LaTeX Font Info:    Try loading font information for FMX+futm on input line 56.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\fmxfutm.fd"
 File: fmxfutm.fd futm-extension
 )
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 55.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 56.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Try loading font information for T1+futs on input line 55.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Try loading font information for T1+futs on input line 56.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\t1futs.fd"
 File: t1futs.fd 2004/03/02 Fontinst v1.926 font definitions for T1/futs.
@@ -860,77 +836,77 @@ File: t1futs.fd 2004/03/02 Fontinst v1.926 font definitions for T1/futs.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count164
-LaTeX Font Info:    Try loading font information for FML+futmi on input line 56
+LaTeX Font Info:    Try loading font information for FML+futmi on input line 57
 .
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fourier\fmlfutmi.fd"
 File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
 )
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 13.24796pt on input line 56.
+(Font)              scaled to size 13.24796pt on input line 57.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 56.
+(Font)              scaled to size 9.19998pt on input line 57.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 7.35999pt on input line 56.
+(Font)              scaled to size 7.35999pt on input line 57.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 13.24796pt on input line 56.
+(Font)              scaled to size 13.24796pt on input line 57.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 56.
+(Font)              scaled to size 9.19998pt on input line 57.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 7.35999pt on input line 56.
-LaTeX Font Info:    Try loading font information for U+msa on input line 56.
+(Font)              scaled to size 7.35999pt on input line 57.
+LaTeX Font Info:    Try loading font information for U+msa on input line 57.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 56.
+LaTeX Font Info:    Try loading font information for U+msb on input line 57.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 56.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 57.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\jknappen\ursfs.fd"
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 58.
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 59.
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <12> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 61.
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 62.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 11.03998pt on input line 67.
+(Font)              scaled to size 11.03998pt on input line 68.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 8.27998pt on input line 67.
+(Font)              scaled to size 8.27998pt on input line 68.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 6.43999pt on input line 67.
+(Font)              scaled to size 6.43999pt on input line 68.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 11.03998pt on input line 67.
+(Font)              scaled to size 11.03998pt on input line 68.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 8.27998pt on input line 67.
+(Font)              scaled to size 8.27998pt on input line 68.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 6.43999pt on input line 67.
+(Font)              scaled to size 6.43999pt on input line 68.
 
 <figures/F_1.jpg, id=1, 822.82407pt x 502.12593pt>
 File: figures/F_1.jpg Graphic file (type jpg)
  <use figures/F_1.jpg>
-Package pdftex.def Info: figures/F_1.jpg used on input line 95.
+Package pdftex.def Info: figures/F_1.jpg used on input line 96.
 (pdftex.def)             Requested size: 219.13965pt x 133.72786pt.
 
 <figures/F_2.jpg, id=2, 828.84656pt x 501.37312pt>
 File: figures/F_2.jpg Graphic file (type jpg)
  <use figures/F_2.jpg>
-Package pdftex.def Info: figures/F_2.jpg used on input line 101.
+Package pdftex.def Info: figures/F_2.jpg used on input line 102.
 (pdftex.def)             Requested size: 221.07242pt x 133.72786pt.
 
 <figures/F_3.jpg, id=3, 831.85782pt x 496.85625pt>
 File: figures/F_3.jpg Graphic file (type jpg)
  <use figures/F_3.jpg>
-Package pdftex.def Info: figures/F_3.jpg used on input line 107.
+Package pdftex.def Info: figures/F_3.jpg used on input line 108.
 (pdftex.def)             Requested size: 223.8938pt x 133.72786pt.
 
 <figures/F_4.jpg, id=4, 828.84656pt x 497.60907pt>
 File: figures/F_4.jpg Graphic file (type jpg)
  <use figures/F_4.jpg>
-Package pdftex.def Info: figures/F_4.jpg used on input line 113.
+Package pdftex.def Info: figures/F_4.jpg used on input line 114.
 (pdftex.def)             Requested size: 222.74184pt x 133.72786pt.
 
 [1
@@ -939,48 +915,101 @@ Package pdftex.def Info: figures/F_4.jpg used on input line 113.
 <figures/F_5.jpg, id=11, 833.36343pt x 496.85625pt>
 File: figures/F_5.jpg Graphic file (type jpg)
  <use figures/F_5.jpg>
-Package pdftex.def Info: figures/F_5.jpg used on input line 126.
+Package pdftex.def Info: figures/F_5.jpg used on input line 127.
 (pdftex.def)             Requested size: 224.29903pt x 133.72786pt.
 
 <figures/F_6.jpg, id=12, 834.86906pt x 504.38437pt>
 File: figures/F_6.jpg Graphic file (type jpg)
  <use figures/F_6.jpg>
-Package pdftex.def Info: figures/F_6.jpg used on input line 132.
+Package pdftex.def Info: figures/F_6.jpg used on input line 133.
 (pdftex.def)             Requested size: 221.34116pt x 133.72786pt.
 
 <figures/F_7.jpg, id=13, 834.11626pt x 503.63156pt>
 File: figures/F_7.jpg Graphic file (type jpg)
  <use figures/F_7.jpg>
-Package pdftex.def Info: figures/F_7.jpg used on input line 138.
+Package pdftex.def Info: figures/F_7.jpg used on input line 139.
 (pdftex.def)             Requested size: 221.47249pt x 133.72786pt.
 
 <figures/F_8.jpg, id=14, 828.09375pt x 496.85625pt>
 File: figures/F_8.jpg Graphic file (type jpg)
  <use figures/F_8.jpg>
-Package pdftex.def Info: figures/F_8.jpg used on input line 144.
+Package pdftex.def Info: figures/F_8.jpg used on input line 145.
 (pdftex.def)             Requested size: 222.8807pt x 133.72786pt.
 
 [2 <./figures/F_1.jpg> <./figures/F_2.jpg> <./figures/F_3.jpg> <./figures/F_4.j
 pg> <./figures/F_5.jpg> <./figures/F_6.jpg> <./figures/F_7.jpg> <./figures/F_8.
-jpg>] (Analytical_Report.aux)
+jpg>]
+Overfull \hbox (4.60046pt too wide) in paragraph at lines 153--154
+\T1/futs/m/n/12 WFEM model is con-structed us-ing 8 beam el-e-ments in or-der t
+o en-able com-par-i-son with ABAQUS
+ []
 
-LaTeX Warning: There were multiply-defined labels.
+<figures/F_1M.jpg, id=18, 828.84656pt x 498.36188pt>
+File: figures/F_1M.jpg Graphic file (type jpg)
+ <use figures/F_1M.jpg>
+Package pdftex.def Info: figures/F_1M.jpg used on input line 186.
+(pdftex.def)             Requested size: 222.40038pt x 133.72786pt.
 
- ) 
+<figures/F_2M.jpg, id=19, 829.59938pt x 499.8675pt>
+File: figures/F_2M.jpg Graphic file (type jpg)
+ <use figures/F_2M.jpg>
+Package pdftex.def Info: figures/F_2M.jpg used on input line 192.
+(pdftex.def)             Requested size: 221.93147pt x 133.72786pt.
+
+<figures/F_3M.jpg, id=20, 828.09375pt x 502.87875pt>
+File: figures/F_3M.jpg Graphic file (type jpg)
+ <use figures/F_3M.jpg>
+Package pdftex.def Info: figures/F_3M.jpg used on input line 198.
+(pdftex.def)             Requested size: 220.20193pt x 133.72786pt.
+
+<figures/F_4M.jpg, id=21, 825.0825pt x 499.11469pt>
+File: figures/F_4M.jpg Graphic file (type jpg)
+ <use figures/F_4M.jpg>
+Package pdftex.def Info: figures/F_4M.jpg used on input line 204.
+(pdftex.def)             Requested size: 221.06305pt x 133.72786pt.
+
+<figures/F_5M.jpg, id=22, 828.09375pt x 498.36188pt>
+File: figures/F_5M.jpg Graphic file (type jpg)
+ <use figures/F_5M.jpg>
+Package pdftex.def Info: figures/F_5M.jpg used on input line 217.
+(pdftex.def)             Requested size: 222.19838pt x 133.72786pt.
+
+<figures/F_6M.jpg, id=23, 829.59938pt x 501.37312pt>
+File: figures/F_6M.jpg Graphic file (type jpg)
+ <use figures/F_6M.jpg>
+Package pdftex.def Info: figures/F_6M.jpg used on input line 223.
+(pdftex.def)             Requested size: 221.27321pt x 133.72786pt.
+
+<figures/F_7M.jpg, id=24, 830.35219pt x 499.8675pt>
+File: figures/F_7M.jpg Graphic file (type jpg)
+ <use figures/F_7M.jpg>
+Package pdftex.def Info: figures/F_7M.jpg used on input line 229.
+(pdftex.def)             Requested size: 222.13284pt x 133.72786pt.
+
+<figures/F_8M.jpg, id=25, 822.82407pt x 500.62032pt>
+File: figures/F_8M.jpg Graphic file (type jpg)
+ <use figures/F_8M.jpg>
+Package pdftex.def Info: figures/F_8M.jpg used on input line 235.
+(pdftex.def)             Requested size: 219.79253pt x 133.72786pt.
+
+[3 <./figures/F_1M.jpg> <./figures/F_2M.jpg> <./figures/F_3M.jpg> <./figures/F_
+4M.jpg>] [4 <./figures/F_5M.jpg> <./figures/F_6M.jpg> <./figures/F_7M.jpg> <./f
+igures/F_8M.jpg>] (Analytical_Report.aux) ) 
 Here is how much of TeX's memory you used:
- 12647 strings out of 493675
- 224866 string characters out of 3143992
- 278074 words of memory out of 3000000
- 15784 multiletter control sequences out of 15000+200000
- 83968 words of font info for 90 fonts, out of 3000000 for 9000
+ 12718 strings out of 493675
+ 225941 string characters out of 3143992
+ 279338 words of memory out of 3000000
+ 15844 multiletter control sequences out of 15000+200000
+ 84927 words of font info for 93 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  45i,10n,43p,10474b,268s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
-s/MiKTeX 2.9/fonts/type1/adobe/utopia/putb8a.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/adobe/utopia/putr8a.pfb>
-Output written on Analytical_Report.pdf (2 pages, 467926 bytes).
+{C:/Program Files/MiKTeX 2.9/fonts/e
+nc/dvips/fontname/8r.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia/
+putb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putr8a.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putri8a.pfb>
+Output written on Analytical_Report.pdf (4 pages, 884576 bytes).
 PDF statistics:
- 26 PDF objects out of 1000 (max. 8388607)
+ 44 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

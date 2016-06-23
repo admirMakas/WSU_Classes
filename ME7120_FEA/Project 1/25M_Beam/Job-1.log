@@ -1,0 +1,19 @@
+Abaqus JOB Job-1
+Abaqus 6.13-1
+Abaqus License Manager checked out the following licenses:
+Abaqus/Standard checked out 5 tokens.
+<39 out of 50 licenses remain available>.
+Begin Analysis Input File Processor
+6/22/2016 1:18:55 PM
+Run pre.exe
+6/22/2016 1:19:08 PM
+Abaqus Error: The executable pre.exe
+aborted with system error code 1073741819.
+Please check the .dat, .msg, and .sta files for error messages if the files
+exist.  If there are no error messages and you cannot resolve the problem,
+please run the command "abaqus job=support information=support" to report and
+save your system information.  Use the same command to run Abaqus that you
+used when the problem occurred.  Please contact your local Abaqus support
+office and send them the input file, the file support.log which you just
+created, the executable name, and the error code.
+Abaqus/Analysis exited with errors

@@ -1,0 +1,16 @@
+Abaqus JOB Job-1
+Abaqus 6.13-1
+Abaqus License Manager checked out the following licenses:
+Abaqus/Standard checked out 5 tokens.
+<39 out of 50 licenses remain available>.
+Begin Analysis Input File Processor
+6/22/2016 1:27:39 PM
+Run pre.exe
+6/22/2016 1:27:50 PM
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+6/22/2016 1:27:50 PM
+Run standard.exe
+6/22/2016 1:28:04 PM
+End Abaqus/Standard Analysis
+Abaqus JOB Job-1 COMPLETED
