@@ -43,7 +43,6 @@ repeat bay 1 times. Attach 1 4 to 2 3.
 fix clamp
 1
 
-
 %fix pin
 %1 0 0 1
 %2 0 0 1

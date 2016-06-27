@@ -1,73 +1,5 @@
 function out=beam2(mode,b,c,d,e)
-  
-% BEAM3 does as listed below. It is an Euler-Bernoulli
-% beam/rod/torsion model. 
-% Beam properties (bprops) are in the order
-% bprops=[E G rho A1 A2 A3 J1 J2 J3 Ixx1 Ixx2 Ixx3 Iyy1 Iyy2 Iyy3]
-% For a linear interpolation they are
-% bprops=[E G rho A1 A2 J1 J2 Izz1 Izz2 Iyy1 Iyy2]
-% Note that the linear interpolation a user shortcut
-% and results in no less computational effort.
-% Third node is in the middle.
-% Fourth "node" defines the beam y plane and is actually from the
-% points array.
-%
-%
-% Defining beam element properties in wfem input file:
-% element properties
-%   E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 
-%   E G rho A1 A2 J1 J2 Izz1 Izz2 Iyy1 Iyy2 
-%   E G rho A J Izz Iyy 
-%   E G rho A J Izz Iyy sx2 sy2 sz2 srx2 sry2 srz2 distype 
-%   E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...  
-%       mx2 my2 mz2 mrx2 mry2 mrz2 
-%   E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...  
-%       sx2 sy2 sz2 srx2 sry2 srz2 distype 
-%   E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...  
-%       mx2 my2 mz2 mrx2 mry2 mrz2 sx2 sy2 sz2 srx2 sry2 srz2 distype 
-%   E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
-%       mx2 my2 mz2 mrx2 mry2 mrz3 mx3 my3 mz3 mrx3 mry3 mrz3 
-%   E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
-%       mx2 my2 mz2 mrx2 mry2 mrz2 sx2 sy2 sz2 srx2 sry2 srz2 ...  
-%       mx3 my3 mz3 mrx3 mry3 mrz3 sx3 sy3 sz3 srx3 sry3 srz3 distype
-%   E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
-%       mx2 my2 mz2 mrx2 mry2 mrz2 sx2 sy2 sz2 srx2 sry2 srz2 ...  
-%       lx2 ly2 lz2 lrx2 lry2 lrz2 
-%   E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
-%       mx2 my2 mz2 mrx2 mry2 mrz2 sx2 sy2 sz2 srx2 sry2 srz2 ...  
-%       lx2 ly2 lz2 lrx2 lry2 lrz2 ...  
-%       mx3 my3 mz3 mrx3 mry3 mrz3 sx3 sy3 sz3 srx3 sry3 srz3 ...
-%       lx3 ly3 lz3 lrx3 lry3 lrz3 
-% If the second format is used, a linear interpolation of the
-% properties is presumed. If the third format is used, constant
-% properties are assumed. In subsequent lines, initial deflections
-% can be prescribed, deterministically, or stochastically
-% (random). The character \command{m} stands for \emph{mean} value,
-% and \command{r} stands for \emph{rotation} value. If a stochastic
-% form is used, a distribution type must be prescribes. A
-% \command{distype} of \command{0} means normal distribution with
-% standard deviation of \command{s} values as prescribe. A
-% \command{distype} of \command{-1} means uniform distribution with
-% bounds relative to the mean set by the \command{s} values. A
-% truncated Gaussian distribution is demonstrated in the last
-% line. There the \command{l} values are limits relative to the
-% mean (just as the \command{s} values for a uniform
-% distribution). Note that the dots illustrate continuation of the
-% same line. Continuations of a line using the M\textsc{atlab}
-% notation \ldots can only be used in defining element
-% properties. Torsional rigidity, $J$, must be less than or equal
-% to $Iyy+Izz$ at any given cross section.  
-%
-% Defining beam3 element in wfem input file:
-%   node1 node2 node3 pointnumber materialnumber 
-%   node1 node2 pointnumber materialnumber 
-%   node1 node2 materialnumber
-%
-% node2 is automatically created if it is missing.
-%
-% See wfem.m for more explanation.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %
 % Variables (global):
 % -------------------
@@ -119,7 +51,7 @@ if strcmp(mode,'generate')
   elnum=c;b;
     element(elnum).nodes=[b(1) b(2)];%n3 recall node 3 is in the
       element(elnum).properties=b(3);
-      element(elnum).point=1;
+      element(elnum).point=1; % 
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
