@@ -1,10 +1,21 @@
-
+variables
+t=0.02
+l=0.5
+Ixx1=1/12*t^4
+Ixx2=1/12*(3/4*t)^4
+Ixx3=1/12*(1/2*t)^4
+Iyy1=Ixx1
+Iyy2=Ixx2
+Iyy3=Ixx3
+J1=0.95*(Ixx1+Iyy1)
+J2=0.95*(Ixx2+Iyy2)
+J3=0.95*(Ixx3+Iyy3)
 
 element properties
 % Beam format
-% E G rho A1 A2 A3 J1 J2 J3 Ixx1 Ixx2 Ixx3 Iyy1 Iyy2 Iyy3
-  1 1 1   1  1  1  1  1  1  1    1    1    1    1    1 
-4 5 6 7 8 9 1 2 3 45 5 6 6 6 6
+% E G rho A1     A2       A3   J1 J2 J3 Ixx1 Ixx2 Ixx3 Iyy1 Iyy2 Iyy3
+steel    t^2 (3/4*t)^2 (t/2)^2 J1 J2 J3 Ixx1 Ixx2 Ixx3 Iyy1 Iyy2 Iyy3
+%Note that these were defined above.
 
 
 nodes
@@ -50,8 +61,22 @@ beam3 elements
 %1 1 1 0
 
 
-%plate element
+fix clamp
+1
+
+
+
+
+%fix pin
+%1 0 0 1
+%2 0 0 1
 %
-
-
-good golly miss molly
+%fix surfaceball
+%3 0 0 1
+%
+% The preceeding from fix pin on would create a simply supported
+% beam in the x-y plane. Note that we needed to fix the translation
+% in the z direction of the center node. We will still have torsion
+% of the rod in it's middle about the x-axis, and extension of node
+% 3 in the x-direction. Don't forget that the blank lines must be
+% uncommented out to signify the end of data entry.

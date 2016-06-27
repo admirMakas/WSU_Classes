@@ -1,0 +1,73 @@
+%Desing variables are the following:
+% x1 = tripod height H, cm
+% x2 = x-sec diameter D, cm
+
+function [] = solve(x)
+
+clear all
+
+% set options for the fmincon function
+
+options = optimset('LargeScale', 'off', 'GradObj', 'on', ...
+    'GradConstr', 'on', 'TolCon', 1e-8, 'TolX', 1e-8, ...
+    'Display', 'final-detailed', 'PlotFcns', @optimplotfval, ...
+    'MaxFunEvals', 5000, 'MaxIter', 1000, 'Algorithm', 'interior-point');
+
+%Line of code below will display all the options for fmincon
+%options = optimset('fmincon')
+
+%Set bounds on the design variables
+Lb = [50; 0.5]; Ub = [500; 50];
+
+%Set initial design
+x0 = [25; 10];
+
+% invoke fmincon function, four instances of "[]" indicate we have
+% no linear constrains for this problem
+
+[x, FunVal, ExitFlag, Output] = ...
+    fmincon(@ObjAndGrad, x0, [], [], [], [], Lb, ...
+    Ub, @ConstAndGrad, options)
+
+function [f, gf] = ObjAndGrad(x)
+
+%rename design variables x
+H=x(1); D=x(2);
+
+%define const function
+f=(6.59734e-3)*D^2*(H^2 + 4800)^(0.5);
+
+%compute gradients of the objective function
+%use nargout to determine if gf output is desired by user
+if nargout > 1
+    gf(1,1) = (950776894900367*D^2*H)/(144115188075855872*(H^2 + 4800)^(1/2));
+    gf(2,1) = (950776894900367*D*(H^2 + 4800)^(1/2))/72057594037927936;
+end
+
+function [g, h, gg, gh] = ConstAndGrad(x)
+
+% g returns inequality constraints
+% h returns equality constraints
+% gg returns gradients of the inequality constraints
+% gh returns gradients of the equality constraints
+
+% rename design variables
+H=x(1); D=x(2);
+
+% inequality constraints
+g(1) = (2.546475e4*(H^2 + 4800)^(0.5))/(D^2*H - 1.5e4);
+g(2) = ((2.0e4*(H^2 + 4800)^(0.5))/(H)) - (1.816774e6*D^4)/(H^2 + 4800);
+
+%Problem has no equality constraints so we get
+h=[];
+
+%Compute constraint gradients
+%use nargout to determine if gg and gh are requested by user
+if nargout > 2
+    gg(1,1) = (101859*H)/(4*(H^2 + 4800)^(1/2)*(D^2*H - 15000)) - (101859*D^2*(H^2 + 4800)^(1/2))/(4*(D^2*H - 15000)^2);
+    gg(2,1) = -(101859*D*H*(H^2 + 4800)^(1/2))/(2*(D^2*H - 15000)^2);
+    gg(1,2) = 20000/(H^2 + 4800)^(1/2) - (20000*(H^2 + 4800)^(1/2))/H^2 + (3633548*D^4*H)/(H^2 + 4800)^2;
+    gg(2,2) = -(7267096*D^3)/(H^2 + 4800);
+
+    gh = [];
+end
