@@ -105,7 +105,7 @@ if strcmp(mode,'make')||strcmp(mode,'istrainforces')
   end
 end
 
-if strcmp(mode,'make') % Define beam node locations for easy later referencing
+if strcmp(mode,'make') % Define BRICK node locations for easy later referencing
   
   x1=nodes(bnodes(1),1);  % Location of node 1 x1 y1 z1
   y1=nodes(bnodes(1),2);
@@ -113,10 +113,29 @@ if strcmp(mode,'make') % Define beam node locations for easy later referencing
   x2=nodes(bnodes(2),1);  % Location of node 2 x2 y2 z2
   y2=nodes(bnodes(2),2);
   z2=nodes(bnodes(2),3);
-
+  x3=nodes(bnodes(3),1);  % Location of node 3 x3 y3 z3
+  y3=nodes(bnodes(3),2);
+  z3=nodes(bnodes(3),3);
+  x4=nodes(bnodes(4),1);  % Location of node 4 x4 y4 z4
+  y4=nodes(bnodes(4),2);
+  z4=nodes(bnodes(4),3);
+  x5=nodes(bnodes(5),1);  % Location of node 5 x5 y5 z5
+  y5=nodes(bnodes(5),2);
+  z5=nodes(bnodes(5),3); 
+  x6=nodes(bnodes(6),1);  % Location of node 6 x6 y6 z6
+  y6=nodes(bnodes(6),2);
+  z6=nodes(bnodes(6),3); 
+  x7=nodes(bnodes(7),1);  % Location of node 7 x7 y7 z7
+  y7=nodes(bnodes(7),2);
+  z7=nodes(bnodes(7),3); 
+  x8=nodes(bnodes(8),1);  % Location of node 8 x8 y8 z8
+  y8=nodes(bnodes(8),2);
+  z8=nodes(bnodes(8),3); 
   %
   % Shape functions for higher order beam. 
   % Shape functions in matrix polynomial form (polyval style) for bending
+  
+  
   bn1 =  1/4*[ 1 0 -3 2]; 
   % bn1d =  1/4*[ 3 0 -3 ]; 
   bn1dd =  [ 3/2 0 ]; 
@@ -137,8 +156,8 @@ if strcmp(mode,'make') % Define beam node locations for easy later referencing
   rn2= [0.5 0.5];
   rn2d= 0.5;
 
-  % Number of Gauss points for integration of beam element
-  numbeamgauss=5; [bgpts,bgpw]=gauss(numbeamgauss);
+  % Number of Gauss points for integration of BRICK element
+  numbeamgauss=8; [bgpts,bgpw]=gauss(numbeamgauss);
   
   % For this beam, 2 nodes, 2DOF each, is a 4 by 4 matrix. 
   kb1=zeros(4,4); kb2=kb1;
@@ -304,3 +323,63 @@ if strcmp(mode,'make') % Define beam node locations for easy later referencing
   lines(numlines+1,:)=[bn1 bn2];
   
 end
+
+function [NN] = getNN(r, s, t) %Computes N^T*N for mass matrix calc.
+    
+N1 = 1/8*((1-r)*(1-s)*(1+t));
+N2 = 1/8*((1-r)*(1-s)*(1-t));
+N3 = 1/8*((1-r)*(1+s)*(1-t));
+N4 = 1/8*((1-r)*(1+s)*(1+t));
+
+N5 = 1/8*((1+r)*(1-s)*(1+t));
+N6 = 1/8*((1+r)*(1-s)*(1-t));
+N7 = 1/8*((1+r)*(1+s)*(1-t));
+N8 = 1/8*((1+r)*(1+s)*(1+t));
+
+N=[N1*eye(3) N2*eye(3) N3*eye(3) N4*eye(3) N5*eye(3) N6*eye(3)...
+    N7*eye(3) N8*eye(3)];
+
+NN=N'*N;
+    
+end
+
+function [dN] = getdN(r, s, t) %Computes N^T*N for mass matrix calc.
+    
+dN1r = ((s - 1)*(t + 1))/8;
+dN1s = ((r - 1)*(t + 1))/8;
+dN1t = ((r - 1)*(s - 1))/8;
+
+dN2r = -((s - 1)*(t - 1))/8;
+dN2s = -((r - 1)*(t - 1))/8;
+dN2t = -((r - 1)*(s - 1))/8;
+
+dN3r = ((s + 1)*(t - 1))/8;
+dN3s = ((r - 1)*(t - 1))/8;
+dN3t = ((r - 1)*(s + 1))/8;
+
+dN4r = -((s + 1)*(t + 1))/8;
+dN4s = -((r - 1)*(t + 1))/8;
+dN4t = -((r - 1)*(s + 1))/8;
+
+dN5r = -((s - 1)*(t + 1))/8;
+dN5s = -((r + 1)*(t + 1))/8;
+dN5t = -((r + 1)*(s - 1))/8;
+
+dN6r = ((s - 1)*(t - 1))/8;
+dN6s = ((r + 1)*(t - 1))/8;
+dN6t = ((r + 1)*(s - 1))/8;
+
+dN7r = -((s + 1)*(t - 1))/8;
+dN7s = -((r + 1)*(t - 1))/8;
+dN7t = -((r + 1)*(s + 1))/8;
+
+dN8r = ((s + 1)*(t + 1))/8;
+dN8s = ((r + 1)*(t + 1))/8;
+dN8t = ((r + 1)*(s + 1))/8;
+
+dN=[[dN1r dN1s dN1t]' [dN2r dN2s dN2t]' [dN3r dN3s dN3t]'...
+    [dN4r dN4s dN4t]' [dN5r dN5s dN5t]' [dN6r dN6s dN6t]'...
+    [dN7r dN7s dN7t]' [dN8r dN8s dN8t]']
+
+end
+
