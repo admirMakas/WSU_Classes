@@ -1,0 +1,23 @@
+who %see variables avaialable to you. 
+who
+%fs %dump sorted natural frequencies to the screen
+% The stuff inside actions is simply executed at the wfem prompt. Any
+% Matlab command can also be executed here. For example, you could double
+% the mass matrix then do another modal analysis. 
+8*7
+% This will display natural frequencies and prompt for mode shape display
+%modalreview
+%fsold=fs %Let's store them for later comparison
+M=M/4; %Dividing M by 4 should double the natural frequencies
+%fs=[]; % WFEM won't run another modal analysis unless I force it to 
+%It's smart enough to know that it has already been done, so I need to 
+%clear the results to it is forced to regenerate them with another
+%modalanalysis
+modalanalysis
+disp('Natural Frequencies in KHz')
+%[fsold fs]/1000
+disp('See, the natural frequency doubled as expected') % I wrote this out 
+%to the output for the user to read after execution.
+% Uncommenting this line will cause an exit from WFEM immediately after 
+% execution
+%end

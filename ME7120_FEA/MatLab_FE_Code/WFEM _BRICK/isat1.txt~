@@ -1,0 +1,35 @@
+parameters
+s=3
+
+element properties
+%Beam format (short)
+% E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3
+  1 1 1   1  1  1  1  1  1  1    1    1    1    1    1 
+
+nodes
+1 0 0 0
+2 0 0 s
+3 0 s*sqrt(3)/2 s/2
+4 s 0 0
+5 s 0 s
+6 s s*sqrt(3)/2 s/2
+
+
+
+beam3 elements
+1 2 1
+2 3 1
+3 1 1
+
+bay element
+beam3 elements
+1 4 1
+2 5 1
+3 6 1
+1 5 1
+2 6 1
+3 4 1
+4 5 1
+5 6 1
+6 4 1
+repeat bay 50 times. Attach 1 2 3 to 4 5 6.

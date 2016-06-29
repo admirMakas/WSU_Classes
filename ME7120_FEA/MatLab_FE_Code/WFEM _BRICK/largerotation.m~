@@ -1,0 +1,27 @@
+function [rotdisp]=largerotation(disp,modes)
+% iven large rotations (participations of modes 4-6), determine the
+% actual position of the system.
+  
+global restart
+global K
+global Ks
+global M
+global nodes
+global beamprops
+global matprops
+global points
+global elprops
+global element
+global Fepsn % Forces representing initial strain
+global F     % Prescribed forces
+global Fnln  % Forces due to changing coordinate systems. 
+global lines
+global surfs
+global bcs   % Boundary Conditions
+global slavedofs
+global fs
+global fms 
+global filename
+global Tr 
+global Mr
+global Kr

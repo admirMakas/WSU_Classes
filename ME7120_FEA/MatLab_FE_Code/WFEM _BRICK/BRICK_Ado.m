@@ -132,7 +132,7 @@ if strcmp(mode,'make') % Define BRICK node locations for easy later referencing
   z8=nodes(bnodes(8),3); 
   %
   
-  global_nodes = [[x1 y1 z1]; [x2 y2 z2]; [x3 y3 z3]; [x4 y4 z4]...
+  global_nodes = [[x1 y1 z1]; [x2 y2 z2]; [x3 y3 z3]; [x4 y4 z4];...
       [x5 y5 z5]; [x6 y6 z6]; [x7 y7 z7]; [x8 y8 z8]];
 
   % Number of Gauss points for integration of BRICK element
@@ -156,102 +156,49 @@ if strcmp(mode,'make') % Define BRICK node locations for easy later referencing
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % 
-  % Derivation of Stiffness matrix
+  % Derivation of Stiffness and Mass matrix
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  B=zeros(6,24);
+  Ke=zeros(24,24);
+  Me=zeros(24,24);
+  id=[1 4 7 10 13 16 19 22];
   
   Em=getE(E,mu);
   
-  % For this BRICK, 8 nodes, 3DOF each, is a 24 by 24 matrix. 
-  B=zeros(6,24);
-  Ke=zeros(24,24);
-  id=[1 4 7 10 13 16 19 22];
-
-  propertynum=num2str(element(elnum).properties);
-  
-  for p=1:num_gauss^3
-      r = intPts(p,1);
-      s = intPts(p,2);
-      t = intPts(p,3);
-      
-      dN=getdN(r,s,t);
-      
-      J=dN*global_nodes;
-      JDet = det(J);
-      
-      for q=1:8
-          dN_i = dN(:,q);
-          
-          Bi=[dot(J(1,:),dN_i) 0 0;
-              0 dot(J(2,:),dN_i) 0;
-              0 0 dot(J(3,:),dN_i);
-              dot(J(2,:),dN_i) dot(J(1,:),dN_i) 0;
-              0 dot(J(3,:),dN_i) dot(J(2,:),dN_i);
-              dot(J(3,:),dN_i) 0 dot(J(1,:),dN_i)];
-          B(1:end, id(q):id(q)+2) = Bi(1:end, 1:end);
-      end
-      
-      Ki = prod(intWts(p,1:end))*JDet*(B'*Em*B);
-      
-      Ke=Ke+Ki;
-  end
-  
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 
-  % Derivation of Mass matrices
-  %
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  
-  Me=zeros(24,24);
-  %Loop to construct BRICK consistent mass matrix
+  % Loop to construct BRICK stiffness matrix
   for p=1:num_gauss^3
       r = intPts(p,1);
       s = intPts(p,2);
       t = intPts(p,3);
       
       Ne=getN(r,s,t);
+      dN=getdN(r,s,t);
+      
+      J=dN*global_nodes;
+      Jinv=J\eye(3);
+      JDet = det(J);
+      
+      for q=1:8
+          dN_i = dN(:,q);
+          
+          Bi=[Jinv(1,:)*dN_i 0 0;
+              0 Jinv(2,:)*dN_i 0;
+              0 0 Jinv(3,:)*dN_i;
+              Jinv(2,:)*dN_i Jinv(1,:)*dN_i 0;
+              0 Jinv(3,:)*dN_i Jinv(2,:)*dN_i;
+              Jinv(3,:)*dN_i 0 Jinv(1,:)*dN_i];
+          
+          B(1:end, id(q):id(q)+2) = Bi(1:end, 1:end);
+      end
+      
+      Ki = prod(intWts(p,1:end))*JDet*(B'*Em*B);
+      Ke=Ke+Ki;
       
       Mi = rho*prod(intWts(p,1:end))*JDet*(Ne'*Ne);
-      
       Me=Me+Mi;
   end
-  
-%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   %
-%   % Coordinate rotations
-%   %
-%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-%   R1=([x2 y2 z2]-[x1 y1 z1]);% Vector along element
-%   lam1=R1/norm(R1);% Unit direction
-%   R2=([x4 y4 z4]-[x1 y1 z1]);% Unit direction to point
-%   R2perp=R2-dot(R2,lam1)*lam1;% Part of R2 perpendicular to lam1
-%   udirec=0;
-%   while norm(R2perp)<10*eps
-%     udirec=udirec+1;
-%     [minval,minloc]=min(lam1);
-%     R2perp=zeros(1,3);
-%     R2perp(udirec)=1;
-%     R2perp=R2perp-dot(R2perp,lam1)*lam1;
-%   end
-%   %Make the unit direction vectors for rotating and put them in the
-%   %rotation matrix. 
-%   lam2=R2perp/norm(R2perp);
-%   lam3=cross(lam1,lam2);
-%   lamloc=[lam1;lam2;lam3];
-%   lam=sparse(12,12);
-%   lam(1:3,1:3)=lamloc;
-%   lam(4:6,4:6)=lamloc;
-%   lam(7:9,7:9)=lamloc;
-%   lam(10:12,10:12)=lamloc;
-%   
-%   % Updating global vars
-%   element(elnum).lambda=lam;
-%   element(elnum).m=m;
-%   element(elnum).k=k;
-% 
-%   kg=lam'*k*lam;
-%   mg=lam'*m*lam;
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
@@ -259,73 +206,23 @@ if strcmp(mode,'make') % Define BRICK node locations for easy later referencing
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  bn1=bnodes(1);bn2=bnodes(2);%bn3=bnodes(3);
-  indices=[bn1*6+(-5:0) bn2*6+(-5:0)];% bn3*6+(-5:0)] ;
+  element(elnum).m=Me;
+  element(elnum).k=Ke;
 
-  K(indices,indices)=K(indices,indices)+kg;
-  M(indices,indices)=M(indices,indices)+mg;
+  indices = zeros(1,24);
+  for w = 1:8
+      currentNode = element(elnum).nodes(w);
+      
+      indices(3*w-2:3*w) = 3*currentNode-2:3*currentNode;
+      
+  end
 
-  % Connecting node information
-  numlines=size(lines,1);
-  lines(numlines+1,:)=[bn1 bn2];
+  K(indices,indices)=K(indices,indices)+Ke;
+  M(indices,indices)=M(indices,indices)+Me;
+
+%   % Connecting node information
+%   numlines=size(lines,1);
+%   lines(numlines+1,:)=[bn1 bn2];
   
   end
 end
-
-% function [NN] = getNN(r, s, t) %Computes N^T*N for mass matrix calc.
-% 
-% N1 = 1/8*((1-r)*(1-s)*(1-t));
-% N2 = 1/8*((1+r)*(1-s)*(1-t));
-% N3 = 1/8*((1+r)*(1+s)*(1-t));
-% N4 = 1/8*((1-r)*(1+s)*(1-t));
-% 
-% N5 = 1/8*((1-r)*(1-s)*(1+t));
-% N6 = 1/8*((1+r)*(1-s)*(1+t));
-% N7 = 1/8*((1+r)*(1+s)*(1+t));
-% N8 = 1/8*((1-r)*(1+s)*(1+t));
-% 
-% N=[N1*eye(3) N2*eye(3) N3*eye(3) N4*eye(3) N5*eye(3) N6*eye(3)...
-%     N7*eye(3) N8*eye(3)];
-%     
-% end
-% 
-% function [dN] = getdN(r, s, t) %Computes N^T*N for mass matrix calc.
-%     
-% dN1r = -((s - 1)*(t - 1))/8;
-% dN1s = -((r - 1)*(t - 1))/8;
-% dN1t = -((r - 1)*(s - 1))/8;
-% 
-% dN2r = ((s - 1)*(t - 1))/8;
-% dN2s = ((r + 1)*(t - 1))/8;
-% dN2t = ((r + 1)*(s - 1))/8;
-% 
-% dN3r = -((s + 1)*(t - 1))/8;
-% dN3s = -((r + 1)*(t - 1))/8;
-% dN3t = -((r + 1)*(s + 1))/8;
-% 
-% dN4r = ((s + 1)*(t - 1))/8;
-% dN4s = ((r - 1)*(t - 1))/8;
-% dN4t = ((r - 1)*(s + 1))/8;
-% 
-% dN5r = ((s - 1)*(t + 1))/8;
-% dN5s = ((r - 1)*(t + 1))/8;
-% dN5t = ((r - 1)*(s - 1))/8;
-% 
-% dN6r = -((s - 1)*(t + 1))/8;
-% dN6s = -((r + 1)*(t + 1))/8;
-% dN6t = -((r + 1)*(s - 1))/8;
-% 
-% dN7r = ((s + 1)*(t + 1))/8;
-% dN7s = ((r + 1)*(t + 1))/8;
-% dN7t = ((r + 1)*(s + 1))/8;
-% 
-% dN8r = -((s + 1)*(t + 1))/8;
-% dN8s = -((r - 1)*(t + 1))/8;
-% dN8t = -((r - 1)*(s + 1))/8;
-% 
-% dN=[[dN1r dN1s dN1t]' [dN2r dN2s dN2t]' [dN3r dN3s dN3t]'...
-%     [dN4r dN4s dN4t]' [dN5r dN5s dN5t]' [dN6r dN6s dN6t]'...
-%     [dN7r dN7s dN7t]' [dN8r dN8s dN8t]'];
-% 
-% end
-

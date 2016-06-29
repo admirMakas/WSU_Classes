@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<meta name="GENERATOR" content="TtH 3.01">
+ <style type="text/css"><!--
+ td div.comp { margin-top: -0.6ex; margin-bottom: -1ex;}
+ td div.comb { margin-top: -0.6ex; margin-bottom: -.6ex;}
+ td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;}
+ td div.norm {line-height:normal;}
+ span.roman {font-family: serif; font-style: normal; font-weight: normal;} 
+ span.overacc2 {position: relative;  left: .8em; top: -1.2ex;}
+ span.overacc1 {position: relative;  left: .6em; top: -1.2ex;} --></style>
+
+    
+<title>[1]</title>
+
+[1]<i>#1</i>
+[1]<font face="helvetica">#1</font>
+[1]<i>#1</i>
+[1]<font face="helvetica"><b>#1</b></font>
+[1]<i>#1</i>
+
+<p>
+ 
+
+<p>
+       
+<title> Wright Finite Element Method:\\
+  \small{An easily extensible research-oriented finite element code}</title>
+    
+<h1 align="center">Wright Finite Element Method:<br />
+  <font size="-1">An easily extensible research-oriented finite element code</font> </h1>
+
+<h3 align="center">Joseph C.&nbsp;Slater </h3> 
+<h3 align="center">May 13, 2003
+</h3>
+    
+<h1>Contents </h1><a href="#tth_sEc1"
+>1&nbsp; Anatomy of the body of the code</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc1.1"
+>1.1&nbsp; Linear Dynamic Analysis</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc1.2"
+>1.2&nbsp; Guyan Reduction</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc1.3"
+>1.3&nbsp; Plotting</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc1.4"
+>1.4&nbsp; Plotting Stresses/Strains (Not completed)</a><br />
+<a href="#tth_sEc2"
+>2&nbsp; Entering data</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc2.1"
+>2.1&nbsp; Units</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc2.2"
+>2.2&nbsp; Defined Constants</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc2.3"
+>2.3&nbsp; Variables</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc2.4"
+>2.4&nbsp; Parameters</a><br />
+<a href="#tth_sEc3"
+>3&nbsp; Meshing</a><br />
+<a href="#tth_sEc4"
+>4&nbsp; Boundary Conditions and Constraints</a><br />
+<a href="#tth_sEc5"
+>5&nbsp; Applied Static Loads</a><br />
+<a href="#tth_sEc6"
+>6&nbsp; Actions</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc6.1"
+>6.1&nbsp; plotundeformed</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc6.2"
+>6.2&nbsp; findinitialstrain</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc6.3"
+>6.3&nbsp; staticanalysis</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc6.4"
+>6.4&nbsp; plotdeformed</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc6.5"
+>6.5&nbsp; modalanalysis</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc6.6"
+>6.6&nbsp; modalreview</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc6.7"
+>6.7&nbsp; reducedofs</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc6.8"
+>6.8&nbsp; planefit</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc6.9"
+>6.9&nbsp; end</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc6.10"
+>6.10&nbsp; M <font size="-2">ATLAB</font> commands</a><br />
+<a href="#tth_sEc7"
+>7&nbsp; Elements</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc7.1"
+>7.1&nbsp; Element modes</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc7.2"
+>7.2&nbsp; Required element modes</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc7.2.1"
+>7.2.1&nbsp; <font face="helvetica">generate</font></a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc7.2.2"
+>7.2.2&nbsp; <font face="helvetica">make</font></a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc7.3"
+>7.3&nbsp; Highly recommended modes</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc7.3.1"
+>7.3.1&nbsp; <font face="helvetica">stressandstrain</font></a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc7.3.2"
+>7.3.2&nbsp; <font face="helvetica">buckle</font></a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc7.4"
+>7.4&nbsp; Optional modes</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc7.4.1"
+>7.4.1&nbsp; numofnodes</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc7.5"
+>7.5&nbsp; Element tools available</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc7.5.1"
+>7.5.1&nbsp; Gauss Legendre Integration</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc7.6"
+>7.6&nbsp; Element types available</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc7.6.1"
+>7.6.1&nbsp; <font face="helvetica">beam3</font></a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc7.6.2"
+>7.6.2&nbsp; <font face="helvetica">inertia</font></a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc7.6.3"
+>7.6.3&nbsp; surfacenode</a><br />
+ 
+ 
+Wright Finite Element Method (WFEM) is designed to be an
+easily extensible research-oriented structural finite element code.
+The design concept is that all ``parts'' of the model are actions by
+external codes. The central finite element code knows nothing about
+any particular element or boundary condition type. It depends on a
+completely self-capable code for implementing the ``method'' of the
+element or boundary condition. The advantage of this approach is that
+the code is able to handle the introduction of new elements without
+any modification of existing parts of the package. Further, additional
+capabilities can be added to elements without disruption to the main
+body of the code.
+
+<p>
+ <h2><a name="tth_sEc1">
+1</a>&nbsp;&nbsp;Anatomy of the body of the code</h2>
+The main body of FEM is currently under construction, and likely will
+be indefinitely. In terms of performing analysis, this is not all that
+bad, since the real work of the code is handled internally to the
+element codes. The ability to find mode shapes and natural
+frequencies, plot deflections, and find stresses are separate aspects
+from the main body, and are performed by the element codes.
+
+     <h3><a name="tth_sEc1.1">
+1.1</a>&nbsp;&nbsp;Linear Dynamic Analysis</h3>
+Finding mode shapes and natural frequencies of a linear model can be
+performed using  which uses Cholesky decomposition
+of the mass matrix and assumes nothing about the stiffness matrix,
+K, in terms of symmetry. However, no asymmetric capabilities have
+been added yet (the FEM code doesn't have the ability to make an
+asymmetric element).
+
+     <h3><a name="tth_sEc1.2">
+1.2</a>&nbsp;&nbsp;Guyan Reduction</h3>
+Guyan reduction of the model can be easily performed using
+. In the automatic mode, it will remove DOFs with a
+mass/stiffness below a predefined threshold.
+
+     <h3><a name="tth_sEc1.3">
+1.3</a>&nbsp;&nbsp;Plotting</h3>
+The ability to be plotted is one that is defined internally to an
+element (See section ). The plotting routine knows
+nothing about elements, only about nodes, their locations, and how
+they are connected (via lines, surfaces...). Lines and patches are
+defined by what nodes they connect, not by geometry. Plotting of modes
+is easily accomplished by adding mode shapes to the undeformed nodal
+location, and plotting all predefined nodes, lines, and patches.
+
+     <h3><a name="tth_sEc1.4">
+1.4</a>&nbsp;&nbsp;Plotting Stresses/Strains (Not completed)</h3>
+Plotting stresses and strains is accomplishes by using the
+ and  matrices. These are actually
+stresses and strain levels corresponding to the appropriate lines and
+patches and are placed in those matrices at the correct locations by
+the appropriate element code.
+
+ <h2><a name="tth_sEc2">
+2</a>&nbsp;&nbsp;Entering data</h2>
+For the sake of ease of use, is best to define nodes and element property types before elements are defined. An example input code is listed as follows:<br />
+<a name="listing:example.txt">
+</a>A simple truss example, example.txt. ]example.txt
+The first thing that one notices about the file is that the '%' can
+be used to add comments throughout the file, at any location, even in
+the middle of data. The '%' must reside in the first column for the
+comment to be recognized as a comment character.
+
+<p>
+Properties are defined after the `element properties' line. Some
+flexibility is allowed for typographical errors, but this flexibility
+shouldn't be exploited for poetic license. Each type of element can
+have its own method for defining element properties. Elements can also
+have multiple methods of data input. For example, it would be quite
+reasonable to allow for a beam element that has constant properties
+along its length. As a result, only 7 entries, <font face="symbol">r</font
+>, A, I<sub>yy</sub>,I<sub>zz</sub>, J, E, and G would be required. For example, see the
+ element documentation regarding allowable material
+input formats and how they are interpreted. The WFEM code makes no
+attempt to understand these values at all. It simply loads them and
+stores them where the element codes can easily find them. Element
+property indices are identified by their row number. In the example
+shown (See Listing <a href="#listing:example.txt">1</a>), there are two element
+properties given. All elements defined later must refer to one of
+these two definitions unless the element has no properties (we're
+staying very flexible here.).
+
+<p>
+Nodes are defined subsequent to the
+<a name="command:nodes">
+</a> command. Unlike elements, the
+first value on each line is the node number. This example shows some
+of the flexibility of the reader in that it allows nodes to be defined
+before or after the elements. In fact, you can alternately define
+nodes and elements. This is convenient if you have an existing model
+and would like to simply tack on an additional substructure to the
+end.
+
+<p>
+Elements are defined using ` ' (in
+this case ). There must exist a function
+. Rows subsequent to such a command are
+defined to be of that type. The definition of elements is concluded
+with a blank line. Keep in mind that the main body of the finite
+element code knows <em>nothing</em> about any element, so adding an
+element to the code means writing a function file to do all of the
+work of using the element.
+
+<p>
+     <h3><a name="tth_sEc2.1">
+2.1</a>&nbsp;&nbsp;Units</h3>
+Like any code, as long as consistent units are used, the code doesn't care what units you are using. The presumption of the code, however, is that values are entered in mks units (kilogram, meter, seconds). To assist with this, some built in constants are available for doing conversions for the user. For example, to enter 1 inch  using presuming mks units, one would instead type . Conversions from mks to th inch-pound system are not available directly, but can always be achieved by inverting the conversions. Currently defined units are  and .
+
+<p>
+     <h3><a name="tth_sEc2.2">
+2.2</a>&nbsp;&nbsp;Defined Constants</h3>
+The gravitational constant  is also defined to be 9.80665 (standard gravity is defined to be at sea level and latitude 45. 
+
+<p>
+Material propeties, E, G, <font face="symbol">r</font
+>, are available instead of typing them out as the variables  (also ),  and  (also ). Others can easily be added to .
+
+<p>
+     <h3><a name="tth_sEc2.3">
+2.3</a>&nbsp;&nbsp;Variables</h3>
+Variables can also be used to define geometries.
+Variables are generated by definitions (e.g. ) following
+the variable command ( on a line by itself).
+Variable can be defined using any lowercase letter with the
+exceptions of i and j which are reserved for i=j=<font face="symbol">Ö</font>{<font face="symbol">-</font
+>1}.
+Variables can also be lowercase letters followed by a number. Other
+variable names may be used with care. The guidelines given here are
+provided to simplify selection of names. As long as the variable name
+doesn't conflict with an internally used variable name, it is
+acceptable to use. A warning will be generated if an illegal choice is
+used.
+
+<p>
+     <h3><a name="tth_sEc2.4">
+2.4</a>&nbsp;&nbsp;Parameters</h3>
+The third, optional, argument to  is a vector of parameters that are used in the problem definition of the input file. If this vector is available, the input file may use variables  where  has a numerical value between 1 and the total length of the input parameter vector. The advantage of parameters is that multiple similar cases can be run without having to repeatedly edit the input file. For instance, 
+
+  for i=1:10
+  wfem('inputfilename.txt',[],i)
+  end
+
+would run the case defined in  to be run 10 times, with the quantity referred to as  in the input file varying between 1 and 10.
+
+ <h2><a name="tth_sEc3">
+3</a>&nbsp;&nbsp;Meshing</h2>
+Meshing in this code is different than meshing in a traditional finite element code. In traditional finite elements, a geometry of an object is defined, the internal region of the body is divided by algorithm into elements, then  nodes are automatically generated. In WFEM, meshing is the repeating of a substructure multiple times in a one dimensional arrangement. To do this, the command  is entered.  Everything between this command and the command  is considered to be the definition of what one bay looks like. This should include <em>only</em> elements. Elements must be <em>bay capable</em>(See section <a href="#sec:elements">7</a>), as the bay meshing requires some knowledge to be obtained regarding the elements. Including non-bay capable elements will lead to erroneous results. No error checking for this exist. The  command is formated as:<br />
+    
+  .<br />
+ Here the nodes listed in  are the innermost nodes of the unit bay, and the nodes listed in  are the outermost nodes, or free nodes. Another way to think of this is that the nodes  are currently the furthest extending nodes in what will become a series of bays. The nodes  are the starting nodes of this unit. For the next bay, the starting nodes will be .For example, the code segment:
+
+bay element
+beam3 element
+1 2 1
+
+<p>
+repeat bay 3 times. Attach 1 to 2. 
+
+will create will create a four element model of a beam by creating the first element (connecting nodes 1 and 2) then creating 3 more elements. 
+
+<p>
+ <a name="listing:compactexample.txt">
+</a>A meshing example., compactexample.txt. 
