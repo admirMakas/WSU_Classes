@@ -1,32 +1,5 @@
 function out=BRICK_Ado(mode,b,c,d,e)
-  
-% BEAM2 does as listed below. It is an Euler-Bernoulli
-% beam/rod/torsion model. 
-% Beam properties (bprops) are in the order
-% bprops=[E G rho A1 A2 J1 J2 Ixx1 Ixx2 Iyy1 Iyy2]
-% Third node is in the middle.
-% Fourth "node" defines the beam y plane and is actually from the
-% points array.
-%
-% Defining beam element properties in wfem input file:
-% element properties
-%   E G rho A1 A2 J1 J2 Izz1 Izz2 Iyy1 Iyy2 
-% Torsional rigidity, $J$, must be less than or equal
-% to $Iyy+Izz$ at any given cross section.  
-%
-% Defining beam2 element in wfem input file:
-%   node1 node2 node3 pointnumber materialnumber 
-
-%
-% See wfem.m for more explanation.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Variables (global):
-% -------------------
-% K       :    Global stiffness matrix
-% M       :    Global mass matrix
-% nodes   :    [x y z] nodal locations
+ 
 global K
 global M
 global nodes
@@ -34,7 +7,7 @@ global elprops
 global element
 global points
 global lines
-%global DoverL
+global surfs
 
 %
 % Variables (local):

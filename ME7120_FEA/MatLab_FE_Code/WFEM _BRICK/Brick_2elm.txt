@@ -1,7 +1,7 @@
 element properties
 % Beam format
 % E (pa) mu (unitless) rho (kg/m^3) 
-200e9 0.3 8050
+2.03e11 0.3 8050
 
 BRICK_Ado elements
 %beam2 elements
@@ -47,7 +47,7 @@ staticanalysis
 
 X
 Xfull = full(X);
-displacements = reshape(Xfull,3,48/3);
+displacements = reshape(Xfull,3,16);
 figure, hold on
 scatter3(nodes(:,1), nodes(:,2), nodes(:,3))
 xlabel('x')
