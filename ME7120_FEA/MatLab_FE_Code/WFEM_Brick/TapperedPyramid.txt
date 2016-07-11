@@ -94,21 +94,21 @@ fix clamp
 54
 
 load
-14	1	2.50E+12
-32	1	1.25E+12
-34	1	1.25E+12
-35	1	1.25E+12
-37	1	1.25E+12
-49	1	6.25E+11
-50	1	6.25E+11
-52	1	6.25E+11
-53	1	6.25E+11
+14	1	2.50E+09
+32	1	1.25E+09
+34	1	1.25E+09
+35	1	1.25E+09
+37	1	1.25E+09
+49	1	6.25E+08
+50	1	6.25E+08
+52	1	6.25E+08
+53	1	6.25E+08
 
 actions
 plotundeformed
 staticanalysis
 plotdeformed
-%post_process
+post_process
 %Disp = full(X);
 %stressandstrain
 end

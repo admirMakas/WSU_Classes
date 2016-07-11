@@ -234,8 +234,6 @@ if strcmp(mode,'make') % Define BRICK node locations for easy later referencing
   K(indices,indices)=K(indices,indices)+Ke;
   M(indices,indices)=M(indices,indices)+Me;
   
-  %surface_maker;
-  
   NodeId = reshape(element(elnum).nodes, [4,2])';
   NodeId = [NodeId NodeId(:,1)];
   
@@ -273,7 +271,6 @@ if strcmp(mode,'make') % Define BRICK node locations for easy later referencing
   %the last three numbers on the row corresponding to that
   %surface.
 
-  
 end
-
+surface_maker;
 end

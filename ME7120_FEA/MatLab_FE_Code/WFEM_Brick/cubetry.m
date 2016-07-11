@@ -9,15 +9,17 @@ global X
 %outer_limits=max(nodes)
 %total_elements=3
 
+figure
+scale = 30;
 for elnum=1:total_elements
     
     x=zeros(4,6);
     y=zeros(4,6);
     z=zeros(4,6);
     
-    dx=displacements(1,:);
-    dy=displacements(2,:);
-    dz=displacements(3,:);
+    dx=displacements(1,:)*scale;
+    dy=displacements(2,:)*scale;
+    dz=displacements(3,:)*scale;
     
     for j=1:4; %for node
         for i=1:6; %for face
@@ -32,8 +34,6 @@ for elnum=1:total_elements
             
         end
     end
-
-
 
 for i=1:6 %back
     h=patch(x(:,i),y(:,i),z(:,i),'b');
@@ -51,9 +51,9 @@ ylabel('y')
 zlabel('z');
 Legend{1}='Undeformed';
 Legend{2}='Deformed';
-Legend{3}=strcat('max dx=',num2str(max(dx)));
-Legend{4}=strcat('max dy=',num2str(max(dy)));
-Legend{5}=strcat('max dz=',num2str(max(dz)));
+Legend{3}=strcat('max dx=',num2str(max(dx/scale)));
+Legend{4}=strcat('max dy=',num2str(max(dy/scale)));
+Legend{5}=strcat('max dz=',num2str(max(dz/scale)));
 legend(Legend)
 
 %legend('Original Nodes','Undeformed','Deformed')
