@@ -47,8 +47,8 @@ if strcmp(mode,'undeformed')
       set(nodeh,'color',[0 0 0],'fontsize',11,'margin',5)
       %    set(nodeh,'buttondownfcn',['disp(get(' num2str(nodeh,16)
       %    ',''string''))'])
-      %set(nodeh,'buttondownfcn',['set(' num2str(nodeh,16) ',''fontsize'',' ...
-      %    '(25-(get(' num2str(nodeh,16) ',''fontsize'' )-11) ))'])
+%       set(nodeh,'buttondownfcn',['set(' num2str(nodeh,16) ',''fontsize'',' ...
+%          '(25-(get(' num2str(nodeh,16) ',''fontsize'' )-11) ))'])
       %set(nodeh,'buttondownfcn')
       %nodeh
       %get(nodeh)
