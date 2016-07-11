@@ -107,7 +107,11 @@ load
 54                   3      694444444.4444
 
 actions
+plotundeformed
 staticanalysis
-post_process
+plotdeformed
+%post_process
+Disp = full(X);
+%stressandstrain
 end
 

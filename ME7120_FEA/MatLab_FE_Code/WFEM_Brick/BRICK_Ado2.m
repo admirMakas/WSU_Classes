@@ -236,7 +236,8 @@ if strcmp(mode,'make') % Define BRICK node locations for easy later referencing
   
   %surface_maker;
   
-  NodeId = reshape(element(elnum).nodes, [4,2])'
+  NodeId = reshape(element(elnum).nodes, [4,2])';
+  NodeId = [NodeId NodeId(:,1)];
   
   
   %   % Connecting node information
@@ -259,17 +260,13 @@ if strcmp(mode,'make') % Define BRICK node locations for easy later referencing
   % node2, node3, and node4 in order to draw A SINGLE SURFACE. For
   % a brick, you need 6 lines like this.
   
-  surfs=[surfs; NodeId(1,:) panelcolor];
-  surfs=[surfs; NodeId(2,:) panelcolor];
+  surfs=[surfs; NodeId(1,1:4) panelcolor];
+  surfs=[surfs; NodeId(2,1:4) panelcolor];
   
-  for nn = 1:3
+  for nn = 1:4
       
-      if nn==1
-          surfs=[surfs; NodeId(1,nn) NodeId(1,end) ...
-              NodeId(2,end) NodeId(2,nn) panelcolor];
-      end
-      
-      surfs=[surfs; NodeId(1,nn:nn+1) NodeId(2,nn+1) NodeId(2,nn) panelcolor];
+      surfs=[surfs; NodeId(1,nn:nn+1) NodeId(2,nn+1) ...
+          NodeId(2,nn) panelcolor];
       
   end
   %Each surface can have a different color if you like. Just change
@@ -278,5 +275,5 @@ if strcmp(mode,'make') % Define BRICK node locations for easy later referencing
 
   
 end
-  %surface_maker;
+
 end

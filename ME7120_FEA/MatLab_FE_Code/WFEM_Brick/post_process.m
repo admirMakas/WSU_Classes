@@ -1,4 +1,4 @@
-% post_process
+post_process
 global displacements
 Xfull = full(X);
 Xfull = Xfull(1:(length(nodes)*6));

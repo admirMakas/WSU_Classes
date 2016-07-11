@@ -42,16 +42,17 @@ if strcmp(mode,'undeformed')
   cameratoolbar('show')
   hold on
   for nodenum=1:size(nodes,1)
-    nodeh=text(nodes(nodenum,1),nodes(nodenum,2),nodes(nodenum,3), ...
-               num2str(nodenum));
-    set(nodeh,'color',[1 0 0],'fontsize',11,'margin',5)
-%    set(nodeh,'buttondownfcn',['disp(get(' num2str(nodeh,16)
-%    ',''string''))'])
-    set(nodeh,'buttondownfcn',['set(' num2str(nodeh,16) ',''fontsize'',' ...
-		    '(25-(get(' num2str(nodeh,16) ',''fontsize'' )-11) ))'])
-    %nodeh
-    %get(nodeh)
-    %pause
+      nodeh=text(nodes(nodenum,1),nodes(nodenum,2),nodes(nodenum,3), ...
+          num2str(nodenum));
+      set(nodeh,'color',[0 0 0],'fontsize',11,'margin',5)
+      %    set(nodeh,'buttondownfcn',['disp(get(' num2str(nodeh,16)
+      %    ',''string''))'])
+      %set(nodeh,'buttondownfcn',['set(' num2str(nodeh,16) ',''fontsize'',' ...
+      %    '(25-(get(' num2str(nodeh,16) ',''fontsize'' )-11) ))'])
+      %set(nodeh,'buttondownfcn')
+      %nodeh
+      %get(nodeh)
+      %pause
   end
   
   for linenum=1:numlines
