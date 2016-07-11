@@ -1,0 +1,6 @@
+AuthzLDAPAuthoritative on
+AuthBasicProvider ldap
+AuthType basic
+AuthName "Campus Username/Password"
+AuthLDAPURL ldap://auth1.wright.edu:389/ou=People,o=wsuauth?uid?base
+require valid-user

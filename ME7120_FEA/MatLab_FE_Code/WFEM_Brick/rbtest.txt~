@@ -1,0 +1,13 @@
+element properties
+1 1 1 1 1 1 1
+
+nodes
+1 0 0 0
+2  0 0  1 
+
+beam3 elements
+1 2 1
+
+constrain rbeam
+1 2
+3 1
