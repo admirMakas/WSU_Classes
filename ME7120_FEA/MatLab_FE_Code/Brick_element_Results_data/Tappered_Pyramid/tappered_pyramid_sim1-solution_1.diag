@@ -1,0 +1,65 @@
+
+*** 14:55:23 *** 
+Starting Nastran Exporter
+
+*** 14:55:23 *** 
+Writing file 
+C:\Users\ado\Desktop\Tappered_Pyramid\tappered_pyramid_sim1-solution_1.dat
+ 
+*** 14:55:23 *** 
+Writing NX NASTRAN 10.0 compatible deck
+
+*** 14:55:23 *** 
+Writing Nastran System section
+
+*** 14:55:23 *** 
+Writing File Management section
+
+*** 14:55:23 *** 
+Writing Executive Control section
+
+*** 14:55:23 *** 
+Writing Case Control section
+
+*** 14:55:23 *** 
+Writing Bulk Data section
+
+*** 14:55:23 *** 
+Writing Nodes
+
+*** 14:55:23 *** 
+Writing Elements
+
+*** 14:55:23 *** 
+Writing Physical Properties
+
+*** 14:55:23 *** 
+Writing Materials
+
+*** 14:55:23 *** 
+Writing Degree-of-Freedom Sets
+
+*** 14:55:23 *** 
+Writing Loads and Constraints
+
+*** 14:55:23 *** 
+Writing Coordinate Systems
+
+*** 14:55:23 *** 
+Summary of Bulk Data cards written
+
++----------+----------+
+|   NAME   |  NUMBER  |
++----------+----------+
+| CHEXA    | 20       |
+| FORCE    | 9        |
+| GRID     | 54       |
+| MAT1     | 1        |
+| PARAM    | 6        |
+| PSOLID   | 1        |
+| SPC      | 9        |
++----------+----------+
+
+*** 14:55:23 *** 
+Nastran Deck Successfully Written
+

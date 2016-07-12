@@ -1,0 +1,30 @@
+Nastran BUFFSIZE=32769 $(c:/program files/siemens/nx 10.0/nxnastran/conf/nast10.rcf[1])
+Nastran BUFFPOOL=20.0X $(c:/program files/siemens/nx 10.0/nxnastran/conf/nast10.rcf[4])
+Nastran DIAGA=128 DIAGB=0 $(c:/program files/siemens/nx 10.0/nxnastran/conf/nast10.rcf[8])
+Nastran SYSTEM(442)=2 $(command line[5])
+Nastran REAL=2147483647 $(program default)
+JID='C:\Users\ado\Desktop\Tappered_Pyramid\tappered_pyramid_sim1-solution_1.dat'
+OUT='./tappered_pyramid_sim1-solution_1'
+MEM=1913389056
+MACH='Intel64 Family 6 Model 94 Stepping 3'
+OPER='Windows 8'
+OSV=' '
+MODEL='Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz (DESKTOP-5UE3P8V)'
+CONFIG=8666
+NPROC=8
+symbol=DELDIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/del' $(program default)
+symbol=DEMODIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/demo' $(program default)
+symbol=SSSALTERDIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/misc/sssalter' $(program default)
+symbol=TPLDIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/tpl' $(program default)
+SDIR='c:/users/ado/appdata/local/temp/tappered_pyramid_sim1-solution_1.T1536_20'
+DBS='c:/users/ado/appdata/local/temp/tappered_pyramid_sim1-solution_1.T1536_20'
+SCR=yes
+SMEM=20.0X
+NEWDEL='c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/SSS'
+DEL='NXNDEF'
+AUTH='28000@desktop-5ue3p8v'
+AUTHQUE=0
+MSGCAT='c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/analysis.msg'
+MSGDEST='f06'
+PROG=bundle
+NEWS='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/news.txt'

@@ -1,0 +1,65 @@
+
+*** 12:22:22 *** 
+Starting Nastran Exporter
+
+*** 12:22:22 *** 
+Writing file 
+C:\Users\ado\Desktop\Tappered_Cylinder\tappered_cylinder_sim1-solution_2.dat
+ 
+*** 12:22:22 *** 
+Writing NX NASTRAN 10.0 compatible deck
+
+*** 12:22:22 *** 
+Writing Nastran System section
+
+*** 12:22:22 *** 
+Writing File Management section
+
+*** 12:22:22 *** 
+Writing Executive Control section
+
+*** 12:22:22 *** 
+Writing Case Control section
+
+*** 12:22:22 *** 
+Writing Bulk Data section
+
+*** 12:22:22 *** 
+Writing Nodes
+
+*** 12:22:22 *** 
+Writing Elements
+
+*** 12:22:22 *** 
+Writing Physical Properties
+
+*** 12:22:22 *** 
+Writing Materials
+
+*** 12:22:22 *** 
+Writing Degree-of-Freedom Sets
+
+*** 12:22:22 *** 
+Writing Loads and Constraints
+
+*** 12:22:22 *** 
+Writing Coordinate Systems
+
+*** 12:22:22 *** 
+Summary of Bulk Data cards written
+
++----------+----------+
+|   NAME   |  NUMBER  |
++----------+----------+
+| CHEXA    | 260      |
+| FORCE    | 33       |
+| GRID     | 363      |
+| MAT1     | 1        |
+| PARAM    | 6        |
+| PSOLID   | 1        |
+| SPC      | 33       |
++----------+----------+
+
+*** 12:22:22 *** 
+Nastran Deck Successfully Written
+

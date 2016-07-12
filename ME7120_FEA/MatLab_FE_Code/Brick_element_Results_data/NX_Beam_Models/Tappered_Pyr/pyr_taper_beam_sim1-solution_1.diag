@@ -1,0 +1,108 @@
+
+*** 21:35:48 *** 
+Starting Nastran Exporter
+
+*** 21:35:48 *** 
+Writing file 
+C:\Users\ado\Documents\GitHub\WSU_Classes\ME7120_FEA\MatLab_FE_Code\Brick_element_Results_data\NX_Beam_Models\Tappered_Pyr\pyr_taper_beam_sim1-solution_1.dat
+ 
+*** 21:35:48 *** 
+Writing NX NASTRAN 10.0 compatible deck
+
+*** 21:35:48 *** 
+Writing Nastran System section
+
+*** 21:35:48 *** 
+Writing File Management section
+
+*** 21:35:48 *** 
+Writing Executive Control section
+
+*** 21:35:48 *** 
+Writing Case Control section
+
+*** 21:35:48 *** 
+Writing Bulk Data section
+
+*** 21:35:48 *** 
+Writing Nodes
+
+*** 21:35:48 *** 
+Writing Elements
+
+*** 21:35:48 *** 
+Writing Physical Properties
+
+*** 21:35:48 *** 
+WARNING : PBEAM physical property SEC1 has a different shear stiffness factor 
+          K1 at end A and end B. An average value will be used for K1.
+ 
+*** 21:35:48 *** 
+WARNING : PBEAM physical property SEC1 has a different shear stiffness factor 
+          K2 at end A and end B. An average value will be used for K2.
+ 
+*** 21:35:48 *** 
+WARNING : PBEAM physical property SEC2 has a different shear stiffness factor 
+          K1 at end A and end B. An average value will be used for K1.
+ 
+*** 21:35:48 *** 
+WARNING : PBEAM physical property SEC2 has a different shear stiffness factor 
+          K2 at end A and end B. An average value will be used for K2.
+ 
+*** 21:35:48 *** 
+WARNING : PBEAM physical property SEC3 has a different shear stiffness factor 
+          K1 at end A and end B. An average value will be used for K1.
+ 
+*** 21:35:48 *** 
+WARNING : PBEAM physical property SEC3 has a different shear stiffness factor 
+          K2 at end A and end B. An average value will be used for K2.
+ 
+*** 21:35:48 *** 
+WARNING : PBEAM physical property SEC4 has a different shear stiffness factor 
+          K1 at end A and end B. An average value will be used for K1.
+ 
+*** 21:35:48 *** 
+WARNING : PBEAM physical property SEC4 has a different shear stiffness factor 
+          K2 at end A and end B. An average value will be used for K2.
+ 
+*** 21:35:48 *** 
+WARNING : PBEAM physical property SEC5 has a different shear stiffness factor 
+          K1 at end A and end B. An average value will be used for K1.
+ 
+*** 21:35:48 *** 
+WARNING : PBEAM physical property SEC5 has a different shear stiffness factor 
+          K2 at end A and end B. An average value will be used for K2.
+ 
+*** 21:35:48 *** 
+Writing Materials
+
+*** 21:35:48 *** 
+Writing Degree-of-Freedom Sets
+
+*** 21:35:48 *** 
+Writing Loads and Constraints
+
+*** 21:35:48 *** 
+Writing Coordinate Systems
+
+*** 21:35:48 *** 
+Summary of Bulk Data cards written
+
++----------+----------+
+|   NAME   |  NUMBER  |
++----------+----------+
+| CBEAM    | 5        |
+| FORCE    | 1        |
+| GRID     | 6        |
+| MAT1     | 1        |
+| PARAM    | 6        |
+| PBEAM    | 5        |
+| SPC      | 1        |
++----------+----------+
+
+*** 21:35:48 *** 
+10 warnings issued
+
+*** 21:35:48 *** 
+Nastran Deck Successfully Written
+
