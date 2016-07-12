@@ -1,0 +1,133 @@
+variables
+%All of these actions are not the most efficient for this problem.
+l=38
+%define radii
+r1 = 74/2
+r2 = 61.21/2
+r3 = 48.43/2
+r4 = 35.64/2
+r5 = 22.86/2
+r6 = 10/2
+%
+%define areas
+A1 = pi*r1^2
+A2 = pi*r2^2
+A3 = pi*r3^2
+A4 = pi*r4^2
+A5 = pi*r5^2
+A6 = pi*r6^2
+%
+Ixx1 = (pi/4)*r1^4
+Ixx2 = (pi/4)*r2^4
+Ixx3 = (pi/4)*r3^4
+Ixx4 = (pi/4)*r4^4
+Ixx5 = (pi/4)*r5^4
+Ixx6 = (pi/4)*r6^4
+%
+Iyy1 = Ixx1
+Iyy2 = Ixx2
+Iyy3 = Ixx3
+Iyy4 = Ixx4
+Iyy5 = Ixx5
+Iyy6 = Ixx6
+%
+J1 = 0.95*(Ixx1+Iyy1)
+J2 = 0.95*(Ixx2+Iyy2)
+J3 = 0.95*(Ixx3+Iyy3)
+J4 = 0.95*(Ixx4+Iyy4)
+J5 = 0.95*(Ixx5+Iyy5)
+J6 = 0.95*(Ixx6+Iyy6)
+%
+E = 200000000000
+mu = 0.3
+G = E/(2*(1+mu))
+rho = 8000
+%
+%
+element properties
+% Beam format
+% E G   rho A1    A2  J1  J2  Ixx1 Ixx2   Iyy1 Iyy2
+E G rho A1 A2 J1 J2 Ixx1 Ixx2 Iyy1 Iyy2
+E G rho A2 A3 J2 J3 Ixx2 Ixx3 Iyy2 Iyy3
+E G rho A3 A4 J3 J4 Ixx3 Ixx4 Iyy3 Iyy4
+E G rho A4 A5 J4 J5 Ixx4 Ixx5 Iyy4 Iyy5
+E G rho A5 A6 J5 J6 Ixx5 Ixx6 Iyy5 Iyy6
+%Note that these were defined above. I can use variables in my input file.
+% I also used "steel" as a property. WFEM has some of these predefined. 
+% Run "units" and type "who" to see variables/values available inside your
+% input file
+
+beam2exampleMCk2 elements
+%node1 node2 node3 pointnum (beam properties number)
+1 2 1 1
+2 3 1 2
+3 4 1 3
+4 5 1 4
+5 6 1 5
+
+nodes
+% I can include comment lines
+% node num, x y z, Node number isn't ever stored in nodes matrix
+1 0 0 0 
+2 0 0 38
+3 0 0 38*2
+4 0 0 38*3
+5 0 0 38*4
+6 0 0 38*5
+
+points
+1 1 1 1
+
+fix clamp
+1
+% The preceeding put a clamp boundary condition on node 1.
+
+load 
+6 1 1e10
+
+%fix pin
+%1 0 0 1
+%2 0 0 1
+%
+%fix surfaceball
+%3 0 0 1
+%
+% The preceeding from fix pin on would create a simply supported
+% beam in the x-y plane. Note that we needed to fix the translation
+% in the z direction of the center node. We will still have torsion
+% of the rod in it's middle about the x-axis, and extension of node
+% 3 in the x-direction. Don't forget that the blank lines must be
+% uncommented out to signify the end of data entry.
+
+actions
+%modalanalysis
+%who
+%fs %dump sorted natural frequencies to the screen
+% The stuff inside actions is simply executed at the wfem prompt. Any
+% Matlab command can also be executed here. For example, you could double
+% the mass matrix then do another modal analysis. 
+% This will display natural frequencies and prompt for mode shape display
+%if uncommented
+%modalreview
+%fsold=fs %Let's store them for later comparison
+%M=M/4; %Dividing M by 4 should double the natural frequencies
+%fs=[]; % WFEM won't run another modal analysis unless I force it to 
+%It's smart enough to know that it has already been done, so I need to 
+%clear the results to it is forced to regenerate them with another
+%modalanalysis.
+%modalanalysis
+%disp('Natural Frequencies in KHz')
+%fprintf('%7.3f %7.3f\n',[fsold'; fs'])
+%disp('See, the natural frequency doubled as expected') % I wrote this out 
+%to the output for the user to read after execution.
+% Uncommenting this line will cause an exit from WFEM immediately after 
+% execution
+%end
+%
+%Let's do static analysis
+plotundeformed
+staticanalysis
+plotdeformed
+%Here are the displacements, X
+X
+end

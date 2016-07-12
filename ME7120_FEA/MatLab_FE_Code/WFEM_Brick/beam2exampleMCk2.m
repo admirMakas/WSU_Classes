@@ -34,7 +34,7 @@ global elprops
 global element
 global points
 global lines
-%global DoverL
+global DoverL
 
 %
 % Variables (local):
@@ -118,7 +118,10 @@ if strcmp(mode,'make') % Define beam node locations for easy later referencing
   x2=nodes(bnodes(2),1);  % Location of node 2 x2 y2 z2
   y2=nodes(bnodes(2),2);
   z2=nodes(bnodes(2),3);
-
+  x4=points(bnodes(3),1); % Grabs points as the orientation 
+  y4=points(bnodes(3),2);
+  z4=points(bnodes(3),3);
+  
   %
   % Shape functions for higher order beam. 
   % Shape functions in matrix polynomial form (polyval style) for bending
@@ -147,8 +150,34 @@ if strcmp(mode,'make') % Define beam node locations for easy later referencing
   
   % For this beam, 2 nodes, 2DOF each, is a 4 by 4 matrix. 
   kb1=zeros(4,4); kb2=kb1;
-
+  l=norm([x2 y2 z2]-[x1 y1 z1]);
   propertynum=num2str(element(elnum).properties);
+
+  if isempty(DoverL)==1
+    DoverL=.1; % recommended
+  end
+  %Euler bernoulli beams must be slender. Warn if not. 
+%   if sqrt(A1*4/pi)/l>DoverL|sqrt(A2*4/pi)/l>DoverL
+%     warndlg({['Dimensions of element ' num2str(elnum) ' using properties '...
+% 	      propertynum ' are more suitable for a Timoshenko beam.'];...
+% 	     'radius divided by length is too large'},...
+% 	    'Improper application of element.','replace')
+%   end
+  % This took some work, but  provide bounds on other values. 
+  if (Izz1+Iyy1)<(1/2.1*A1^2/pi)|(Izz2+Iyy2)<(1/2.1*A2^2/pi)
+    %2.0 would be exact for a circle
+    warndlg({['Iyy+Izz for properties number' propertynum ' can''t be as '...
+	      'low as have been given.'];...
+	     'Nonphysical properties.'},['Impossible cross sectional' ...
+		    ' properties'],'replace')
+  end
+  slenderness=min([sqrt((Izz1+Iyy1)/A1) sqrt((Izz2+Iyy2)/A2)  ])/l;
+  % Check if this is a beam or something so thin that its really a
+  % string. 
+  if slenderness<.002
+    disp([num2str(elnum) ['is a rediculously thin element. Please' ...
+		    ' check numbers.']])
+  end
   
   Jac=l/2;% Beam Jacobian. 
   % Local Bending in x-y plane
@@ -182,7 +211,22 @@ if strcmp(mode,'make') % Define beam node locations for easy later referencing
   for i=1:numrodgauss
     rodsfs=[polyval(rn1d,rgpts(i))/Jac;
             polyval(rn2d,rgpts(i))/Jac];
-
+%             polyval(rn3d,rgpts(i))/Jac];
+%     if (J1>(Iyy1+Izz1))|(J2>(Iyy2+Izz2))%|(J3>(Iyy3+Izz3))
+%       if (J1>(Iyy1+Izz1))
+% 	disp('WARNING: J1 must be <= Iyy1+Izz1')%More checks for reality
+%       end
+%       if (J2>(Iyy2+Izz2))
+% 	disp('WARNING: J2 must be <= Iyy2+Izz2')%More checks for reality
+%       end
+% %       if (J3>(Iyy3+Izz3))
+% % 	disp('WARNING: J3 must be <= Iyy3+Izz3')%More checks for reality
+% %       end
+%       disp(['Error in element properties number '... 
+% 	    num2str(element(elnum).properties) ...
+% 	    'used by element ' num2str(elnum) ' on line'...
+% 	    num2str(element(elnum).lineno) '.'])
+%     end
     J=polyval(rn1*J1+rn2*J2,bgpts(i));% J at gauss point.
     A=polyval(rn1*A1+rn2*A2,bgpts(i));% A at gauss point
     
