@@ -1,0 +1,197 @@
+variables
+%All of these actions are not the most efficient for this problem.
+l=1
+%define height and width
+h = 0.1
+w = 0.1
+%
+%define areas
+A1 = h*w
+%
+Ixx1 = (h^3*w)/12
+%
+Iyy1 = Ixx1
+%
+J1 = 0.95*(Ixx1+Iyy1)
+%
+E = 200000000000
+mu = 0.29
+G = E/(2*(1+mu))
+rho = 7860
+%
+%
+element properties
+% Beam format
+% E G   rho A1    A2  J1  J2  Ixx1 Ixx2   Iyy1 Iyy2
+E G rho A1 A1 J1 J1 Ixx1 Ixx1 Iyy1 Iyy1
+%
+%Note that these were defined above. I can use variables in my input file.
+% I also used "steel" as a property. WFEM has some of these predefined. 
+% Run "units" and type "who" to see variables/values available inside your
+% input file
+
+beam2exampleMCk2 elements
+%node1 node2 node3 pointnum (beam properties number)
+1	2	1	1
+2	3	1	1
+3	4	1	1
+4	5	1	1
+5	6	1	1
+6	7	1	1
+7	8	1	1
+8	9	1	1
+9	10	1	1
+10	11	1	1
+11	12	1	1
+12	13	1	1
+13	14	1	1
+14	15	1	1
+15	16	1	1
+16	17	1	1
+17	18	1	1
+18	19	1	1
+19	20	1	1
+20	21	1	1
+21	22	1	1
+22	23	1	1
+23	24	1	1
+24	25	1	1
+25	26	1	1
+26	27	1	1
+27	28	1	1
+28	29	1	1
+29	30	1	1
+30	31	1	1
+31	32	1	1
+32	33	1	1
+33	34	1	1
+34	35	1	1
+35	36	1	1
+36	37	1	1
+37	38	1	1
+38	39	1	1
+39	40	1	1
+40	41	1	1
+41	42	1	1
+42	43	1	1
+43	44	1	1
+44	45	1	1
+45	46	1	1
+46	47	1	1
+47	48	1	1
+48	49	1	1
+49	50	1	1
+50	51	1	1
+
+
+nodes
+% I can include comment lines
+% node num, x y z, Node number isn't ever stored in nodes matrix
+1	0	0	0
+2	0	0	0.1
+3	0	0	0.2
+4	0	0	0.3
+5	0	0	0.4
+6	0	0	0.5
+7	0	0	0.6
+8	0	0	0.7
+9	0	0	0.8
+10	0	0	0.9
+11	0	0	1
+12	0	0	1.1
+13	0	0	1.2
+14	0	0	1.3
+15	0	0	1.4
+16	0	0	1.5
+17	0	0	1.6
+18	0	0	1.7
+19	0	0	1.8
+20	0	0	1.9
+21	0	0	2
+22	0	0	2.1
+23	0	0	2.2
+24	0	0	2.3
+25	0	0	2.4
+26	0	0	2.5
+27	0	0	2.6
+28	0	0	2.7
+29	0	0	2.8
+30	0	0	2.9
+31	0	0	3
+32	0.1	0	3
+33	0.2	0	3
+34	0.3	0	3
+35	0.4	0	3
+36	0.5	0	3
+37	0.6	0	3
+38	0.7	0	3
+39	0.8	0	3
+40	0.9	0	3
+41	1	0	3
+42	1.1	0	3
+43	1.2	0	3
+44	1.3	0	3
+45	1.4	0	3
+46	1.5	0	3
+47	1.6	0	3
+48	1.7	0	3
+49	1.8	0	3
+50	1.9	0	3
+51	2	0	3
+
+points
+1 1 1 1
+
+fix clamp
+1
+% The preceeding put a clamp boundary condition on node 1.
+
+load 
+51 1 1e4
+
+%fix pin
+%51 0 0 1
+%2 0 0 1
+%
+fix surfaceball
+51 0 0 1
+%
+% The preceeding from fix pin on would create a simply supported
+% beam in the x-y plane. Note that we needed to fix the translation
+% in the z direction of the center node. We will still have torsion
+% of the rod in it's middle about the x-axis, and extension of node
+% 3 in the x-direction. Don't forget that the blank lines must be
+% uncommented out to signify the end of data entry.
+
+actions
+modalanalysis
+%who
+fs %dump sorted natural frequencies to the screen
+% The stuff inside actions is simply executed at the wfem prompt. Any
+% Matlab command can also be executed here. For example, you could double
+% the mass matrix then do another modal analysis. 
+% This will display natural frequencies and prompt for mode shape display
+%if uncommented
+modalreview
+%fsold=fs %Let's store them for later comparison
+%M=M/4; %Dividing M by 4 should double the natural frequencies
+%fs=[]; % WFEM won't run another modal analysis unless I force it to 
+%It's smart enough to know that it has already been done, so I need to 
+%clear the results to it is forced to regenerate them with another
+%modalanalysis.
+%modalanalysis
+%disp('Natural Frequencies in KHz')
+%fprintf('%7.3f %7.3f\n',[fsold'; fs'])
+%disp('See, the natural frequency doubled as expected') % I wrote this out 
+%to the output for the user to read after execution.
+% Uncommenting this line will cause an exit from WFEM immediately after 
+% execution
+%end
+%
+%Let's do static analysis
+plotundeformed
+staticanalysis
+plotdeformed
+%Here are the displacements, X
+X
+end
