@@ -60,9 +60,9 @@ while t<0.125 && isnan(Dn(1,1))~=1
    
 end
 
-% figure
-% plot(t_arr, -Dn_Hist(121,:))
-% figure
-% plot(t_arr, -dDn_Hist(121,:))
-% figure
-% plot(t_arr, -ddDn_Hist(121,:))
+figure
+plot(t_arr, -Dn_Hist(121,:))
+figure
+plot(t_arr, -dDn_Hist(121,:))
+figure
+plot(t_arr, -ddDn_Hist(121,:))
