@@ -1,0 +1,66 @@
+
+*** 16:50:36 *** 
+Starting Nastran Exporter
+
+*** 16:50:36 *** 
+Writing file C:\Users\ado\Desktop\L-beam\l-beam_sim1-solution_2.dat
+
+*** 16:50:36 *** 
+Writing NX NASTRAN 10.0 compatible deck
+
+*** 16:50:36 *** 
+Writing Nastran System section
+
+*** 16:50:36 *** 
+Writing File Management section
+
+*** 16:50:36 *** 
+Writing Executive Control section
+
+*** 16:50:36 *** 
+Writing Case Control section
+
+*** 16:50:36 *** 
+Writing Bulk Data section
+
+*** 16:50:36 *** 
+Writing Nodes
+
+*** 16:50:36 *** 
+Writing Elements
+
+*** 16:50:36 *** 
+Writing Physical Properties
+
+*** 16:50:36 *** 
+Writing Materials
+
+*** 16:50:36 *** 
+Writing Degree-of-Freedom Sets
+
+*** 16:50:36 *** 
+Writing Loads and Constraints
+
+*** 16:50:36 *** 
+Writing Coordinate Systems
+
+*** 16:50:36 *** 
+Summary of Bulk Data cards written
+
++----------+----------+
+|   NAME   |  NUMBER  |
++----------+----------+
+| CBEAM    | 50       |
+| EIGRL    | 1        |
+| GRID     | 52       |
+| MAT1     | 1        |
+| PARAM    | 6        |
+| PBEAM    | 1        |
+| RBE2     | 1        |
+| SPC      | 51       |
+| SPCADD   | 1        |
++----------+----------+
+
+*** 16:50:36 *** 
+Nastran Deck Successfully Written
+
