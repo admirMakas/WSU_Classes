@@ -10,9 +10,9 @@
 %%
 % This is the Newmark Method implementation
 %
-b=0.25;
-y=0.50;
-dt = 0.0001;
+b=1/12;
+y=1/2;
+dt = 0.000001;
 
 Dn = zeros(150,1);
 dDn = zeros(150,1);
