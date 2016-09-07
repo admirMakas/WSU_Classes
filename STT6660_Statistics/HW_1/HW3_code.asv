@@ -1,0 +1,7 @@
+k=0;
+n=3;
+p=0.2155;
+
+bc = factorial(n)/(factorial(k)*factorial(n-k));
+
+P = bc*p^k*(1-p)^(n-k)
