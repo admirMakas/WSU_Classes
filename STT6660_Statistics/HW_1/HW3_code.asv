@@ -1,7 +1,8 @@
-k=0;
+k=3;
 n=3;
-p=0.2155;
 
 bc = factorial(n)/(factorial(k)*factorial(n-k));
 
-P = bc*p^k*(1-p)^(n-k)
+x = fsolve(@(x)0.86 - bc*x.^k.*(1-x).^(n-k), [0, 0.5, 1]);
+
+

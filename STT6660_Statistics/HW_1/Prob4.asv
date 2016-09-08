@@ -10,11 +10,21 @@ data = [2.3 2.6 2.4 2.2 2.3 2.5 1.9 2.2];
 avg = mean(data)
 stdev = std(data)
 
-prob = .975;
+% range = linspace(0,350,200);
+% 
+% cdf_val = cdf(pd, range);
+% pdf_val = pdf(pd, range);
 
-Zt = tinv(prob, 7)
+% figure()
+% plot(range, cdf_val)
+% figure()
+% plot(range, pdf_val)
 
-Probt = tcdf(1.323, 7)
+prob = .95;
+
+Zt = tinv(prob, 8)
+
+Probt = tcdf(1.296, 8)
 
 Ylow = avg - Zt*(stdev/sqrt(7))
 Yhigh = avg + Zt*(stdev/sqrt(7))
