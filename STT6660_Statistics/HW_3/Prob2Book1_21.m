@@ -6,7 +6,13 @@ y = [16 9 17 12 22 13 8 15 19 11];
 
 %% part 1-21
 
-%scatter(x,y)
+figure()
+scatter(x,y, 90, 'fillcolor', 'k')
+axis([-0.5 3.5 5 25])
+title('Scatter Plot X vs Y', 'fontsize', 16)
+xlabel('Number of Transfers', 'fontsize', 16)
+ylabel('Number of Broken Ampules', 'fontsize', 16)
+
 
 avg_x = mean(x)
 avg_y = mean(y)
